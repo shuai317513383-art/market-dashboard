@@ -42,10 +42,10 @@ body{background:#090e18;color:#c8d8e8;font-family:-apple-system,BlinkMacSystemFo
 .warn{background:#120804;display:flex;align-items:center;justify-content:center;height:20px}
 .wtxt{font-size:9px;color:#ff8c50;font-weight:600}
 .wtxt em{font-style:normal;color:#ff6020}
-.main{display:grid;grid-template-columns:196px 1fr;gap:1px;background:#162030;overflow:hidden}
-.lcol{display:flex;flex-direction:column;gap:1px;background:#162030;overflow:hidden}
-.sec{background:#0c1622;display:flex;flex-direction:column;overflow:hidden}
-.rcol{display:flex;flex-direction:column;gap:1px;background:#162030;overflow:hidden;min-width:0}
+.main{height:100%;display:grid;grid-template-columns:196px 1fr;gap:1px;background:#162030;overflow:hidden}
+.lcol{flex:1;display:flex;flex-direction:column;gap:1px;background:#162030;overflow:hidden}
+.sec{flex:1;background:#0c1622;display:flex;flex-direction:column;overflow:hidden}
+.rcol{flex:1;display:flex;flex-direction:column;gap:1px;background:#162030;overflow:hidden;min-width:0}
 .shd2{display:flex;align-items:center;gap:5px;padding:3px 8px;background:#08101c;flex-shrink:0;border-bottom:1px solid #162030}
 .shdl{font-size:12px}
 .shdl+span{font-size:9px;font-weight:700;color:#4a6a8a}
@@ -63,7 +63,7 @@ body{background:#090e18;color:#c8d8e8;font-family:-apple-system,BlinkMacSystemFo
 .hm:hover{transform:scale(1.06);opacity:1;z-index:5}
 .hmn{font-size:7px;color:rgba(255,255,255,0.85);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100%;text-align:center;line-height:1.2;font-weight:500}
 .hmc{font-size:10px;font-weight:700;color:#fff;line-height:1.2}
-.nrow{background:#0a1018;display:flex;flex-direction:column;overflow:hidden;border-top:1px solid #162030}
+.nrow{flex:1;background:#0a1018;display:flex;flex-direction:column;overflow:hidden;border-top:1px solid #162030}
 .nhdr{display:flex;align-items:center;padding:3px 10px;gap:6px;flex-shrink:0;background:#060c14;border-bottom:1px solid #111d2a}
 .live{display:flex;align-items:center;gap:3px}
 .lbl{font-size:9px;color:#ff5050;font-weight:700}
@@ -73,20 +73,20 @@ body{background:#090e18;color:#c8d8e8;font-family:-apple-system,BlinkMacSystemFo
 .ngrid{display:flex;gap:5px;padding:3px 6px;overflow-x:auto;flex:1;align-items:flex-start;flex-wrap:nowrap;height:calc(100% - 2px)}
 .ngrid::-webkit-scrollbar{height:2px}
 .ngrid::-webkit-scrollbar-thumb{background:#1e2d3d}
-.ni{display:inline-flex;align-items:center;gap:4px;padding:2px 6px;border-radius:3px;cursor:pointer;flex-shrink:0;border:1px solid transparent;transition:all 0.12s;background:#0c1824}
+.ni{height:calc(100% - 2px);display:inline-flex;align-items:center;gap:4px;padding:2px 6px;border-radius:3px;cursor:pointer;flex-shrink:0;border:1px solid transparent;transition:all 0.12s;background:#0c1824}
 .ni:hover{background:#111d2a;border-color:#1e3040}
 .ni:hover .nin{color:#00a4ff}
 .nit{font-size:8px;color:#3a5060;font-weight:600;flex-shrink:0}
 .nin{font-size:9px;color:#8ab4d4;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;transition:color 0.12s}
 .nig{display:flex;gap:2px;flex-shrink:0}
-.opp-row{background:#0e1622;display:grid;grid-template-columns:176px repeat(3,1fr);gap:1px}
-.ohd2{display:flex;align-items:center;gap:6px;padding:3px 8px;background:#08101c;grid-column:1/-1;font-size:9px;font-weight:700;color:#4a6a8a;border-bottom:1px solid #162030;flex-shrink:0}
+.opp-row{height:78px;background:#0e1622;display:grid;grid-template-columns:176px repeat(3,1fr);gap:1px}
+.ohd2{flex-shrink:0;display:flex;align-items:center;gap:6px;padding:3px 8px;background:#08101c;grid-column:1/-1;font-size:9px;font-weight:700;color:#4a6a8a;border-bottom:1px solid #162030;flex-shrink:0}
 .ohl{font-size:13px}
 .oht{color:#00a4ff}
 .ohs{color:#607080;font-weight:400;font-size:8px}
 .ohleg{font-size:8px;color:#3a5060;margin-left:4px;display:flex;gap:3px}
 .ohnote{font-size:7px;color:#ff8000;margin-left:auto}
-.ob{background:#0e1622;display:flex;flex-direction:column;overflow:hidden}
+.ob{flex:1;background:#0e1622;display:flex;flex-direction:column;overflow:hidden}
 .ohd{padding:3px 8px;font-size:8px;font-weight:700;background:#08101c;display:flex;align-items:center;gap:3px;flex-shrink:0;border-bottom:1px solid #162030}
 .ohd em{font-style:normal;color:#3a5060;font-weight:400;margin-left:auto;font-size:7px}
 .obs{flex:1;overflow-y:auto;padding:1px 2px}
@@ -103,9 +103,9 @@ body{background:#090e18;color:#c8d8e8;font-family:-apple-system,BlinkMacSystemFo
 .oreas{font-size:7px;color:#3a5060;padding:0 3px 2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .b5{display:flex;gap:1px;height:2px;border-radius:1px;overflow:hidden;background:#162030;width:42px}
 .b5 div{height:100%}
-.split-row{display:grid;grid-template-columns:1.1fr 1fr;gap:1px;overflow:hidden;background:#162030}
+.split-row{flex:1;display:grid;grid-template-columns:1.1fr 1fr;gap:1px;overflow:hidden;background:#162030}
 .erow{background:#0e1622;display:flex;flex-direction:column;overflow:hidden;height:100%}
-.er5{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;flex:1;overflow:hidden;background:#162030}
+.er5{flex:1;display:grid;grid-template-columns:repeat(5,1fr);gap:1px;flex:1;overflow:hidden;background:#162030}
 .erc2{overflow:hidden;display:flex;flex-direction:column;min-height:0}
 .erhd{padding:3px 6px;font-size:9px;font-weight:700;display:flex;align-items:center;gap:4px;flex-shrink:0;border-bottom:1px solid #162030}
 .ersi{font-size:11px}
@@ -120,7 +120,7 @@ body{background:#090e18;color:#c8d8e8;font-family:-apple-system,BlinkMacSystemFo
 .mb div{height:100%}
 .erempty{font-size:8px;color:#3a5060;padding:4px}
 .dim-row{background:#0e1622;display:flex;flex-direction:column;overflow:hidden;height:100%}
-.dimt{overflow-y:auto;flex:1}
+.dimt{flex:1;overflow-y:auto;flex:1}
 .dtbl{width:100%;border-collapse:collapse;font-size:9px}
 .dtbl th{background:#08101c;color:#607080;font-size:8px;font-weight:700;padding:3px 5px;text-align:center;border-bottom:1px solid #162030;white-space:nowrap;position:sticky;top:0;z-index:2}
 .dtbl td{padding:2px 4px;vertical-align:middle;border-bottom:1px solid #0f1a24}
