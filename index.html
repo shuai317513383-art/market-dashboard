@@ -8,7 +8,7 @@
 *{margin:0;padding:0;box-sizing:border-box}a{text-decoration:none;color:inherit}
 html,body{height:100%;overflow:hidden}
 body{background:#090e18;color:#c8d8e8;font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif}
-.wrap{height:100vh;display:grid;grid-template-rows:44px 20px 1fr 78px 1fr 26px;gap:1px;background:#162030}
+.wrap{height:100vh;display:grid;grid-template-rows:44px 20px minmax(0, 1fr) 78px minmax(0, 1fr) 26px;gap:1px;background:#162030}
 .hdr{background:#08101c;display:flex;align-items:center;padding:0 8px;gap:0;overflow:hidden}
 .logo{display:flex;align-items:center;gap:4px;flex-shrink:0}
 .lt{font-size:11px;font-weight:700;color:#00a4ff}
@@ -42,7 +42,7 @@ body{background:#090e18;color:#c8d8e8;font-family:-apple-system,BlinkMacSystemFo
 .warn{background:#120804;display:flex;align-items:center;justify-content:center;height:20px}
 .wtxt{font-size:9px;color:#ff8c50;font-weight:600}
 .wtxt em{font-style:normal;color:#ff6020}
-.main{height:100%;display:grid;grid-template-columns:196px 1fr;gap:1px;background:#162030;overflow:hidden}
+.main{height:100%;display:grid;grid-template-columns:196px 1fr;gap:1px;background:#162030;overflow:hidden;min-height:0
 .lcol{flex:1;display:flex;flex-direction:column;min-height:0;gap:1px;background:#162030;overflow:hidden}
 .sec{flex:1;background:#0c1622;display:flex;flex-direction:column;overflow:hidden}
 .rcol{flex:1;display:flex;flex-direction:column;min-height:0;gap:1px;background:#162030;overflow:hidden;min-width:0}
@@ -103,9 +103,9 @@ body{background:#090e18;color:#c8d8e8;font-family:-apple-system,BlinkMacSystemFo
 .oreas{font-size:7px;color:#3a5060;padding:0 3px 2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .b5{display:flex;gap:1px;height:2px;border-radius:1px;overflow:hidden;background:#162030;width:42px}
 .b5 div{height:100%}
-.split-row{flex:1;display:grid;grid-template-columns:1.1fr 1fr;gap:1px;overflow:hidden;background:#162030}
+.split-row{flex:1;display:grid;grid-template-columns:1.1fr 1fr;gap:1px;overflow:hidden;background:#162030;min-height:0
 .erow{background:#0e1622;display:flex;flex-direction:column;overflow:hidden;height:100%}
-.er5{flex:1;display:grid;grid-template-columns:repeat(5,1fr);gap:1px;flex:1;overflow:hidden;background:#162030}
+.er5{flex:1;display:grid;grid-template-columns:repeat(5,1fr);gap:1px;flex:1;overflow:hidden;background:#162030;min-height:0
 .erc2{overflow:hidden;display:flex;flex-direction:column;min-height:0}
 .erhd{padding:3px 6px;font-size:9px;font-weight:700;display:flex;align-items:center;gap:4px;flex-shrink:0;border-bottom:1px solid #162030}
 .ersi{font-size:11px}
