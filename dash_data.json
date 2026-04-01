@@ -1,1 +1,573 @@
-{"results": {"512660": {"sec": "军工", "code": "512660", "name": "军工ETF国泰", "change": 0.38, "price": 1.309, "scores": {"政策": 65, "基本面": 50, "技术面": 30, "资金面": 35, "情绪面": 58}, "comp": 44.1, "ma_s": 25, "stage": "退潮", "icon": "⚫", "tag": "WAIT", "color": "#445566", "bg": "#1a2530", "sig": "减仓", "sig_col": "#ff8800", "desc": "趋势向下+资金持续流出", "url": "https://fund.eastmoney.com/512660.html"}, "515790": {"sec": "光伏", "code": "515790", "name": "光伏ETF华泰柏瑞", "change": 0.68, "price": 1.041, "scores": {"政策": 65, "基本面": 32, "技术面": 0, "资金面": 35, "情绪面": 58}, "comp": 33.3, "ma_s": 25, "stage": "退潮", "icon": "⚫", "tag": "WAIT", "color": "#445566", "bg": "#1a2530", "sig": "观望", "sig_col": "#556677", "desc": "趋势向下+资金持续流出", "url": "https://fund.eastmoney.com/515790.html"}, "512760": {"sec": "半导体", "code": "512760", "name": "芯片ETF国泰", "change": 3.13, "price": 0.792, "scores": {"政策": 65, "基本面": 32, "技术面": 30, "资金面": 78, "情绪面": 80}, "comp": 57.5, "ma_s": 25, "stage": "退潮", "icon": "⚫", "tag": "WAIT", "color": "#445566", "bg": "#1a2530", "sig": "持有", "sig_col": "#ffaa00", "desc": "趋势向下+资金持续流出", "url": "https://fund.eastmoney.com/512760.html"}, "515050": {"sec": "5G通信", "code": "515050", "name": "通信ETF华夏", "change": 3.42, "price": 2.387, "scores": {"政策": 65, "基本面": 50, "技术面": 30, "资金面": 78, "情绪面": 80}, "comp": 59.2, "ma_s": 25, "stage": "退潮", "icon": "⚫", "tag": "WAIT", "color": "#445566", "bg": "#1a2530", "sig": "持有", "sig_col": "#ffaa00", "desc": "趋势向下+资金持续流出", "url": "https://fund.eastmoney.com/515050.html"}, "512010": {"sec": "医药", "code": "512010", "name": "医药ETF易方达", "change": 3.57, "price": 0.377, "scores": {"政策": 65, "基本面": 68, "技术面": 100, "资金面": 100, "情绪面": 87}, "comp": 89.0, "ma_s": 70, "stage": "高潮", "icon": "🔴", "tag": "BUY++", "color": "#ff3b30", "bg": "#550000", "sig": "强力买入", "sig_col": "#00c07f", "desc": "全面亢奋+涨幅达峰值", "url": "https://fund.eastmoney.com/512010.html"}, "512880": {"sec": "证券", "code": "512880", "name": "证券ETF国泰", "change": 1.55, "price": 1.045, "scores": {"政策": 47, "基本面": 50, "技术面": 30, "资金面": 35, "情绪面": 58}, "comp": 41.4, "ma_s": 25, "stage": "退潮", "icon": "⚫", "tag": "WAIT", "color": "#445566", "bg": "#1a2530", "sig": "观望", "sig_col": "#556677", "desc": "趋势向下+资金持续流出", "url": "https://fund.eastmoney.com/512880.html"}, "159611": {"sec": "电力", "code": "159611", "name": "电力ETF", "change": 0, "price": 0, "scores": {"政策": 40, "基本面": 50, "技术面": 50, "资金面": 35, "情绪面": 58}, "comp": 46.4, "ma_s": 50, "stage": "退潮", "icon": "⚫", "tag": "WAIT", "color": "#445566", "bg": "#1a2530", "sig": "减仓", "sig_col": "#ff8800", "desc": "趋势向下+资金持续流出", "url": "https://fund.eastmoney.com/159611.html"}, "512690": {"sec": "白酒", "code": "512690", "name": "酒ETF鹏华", "change": 1.01, "price": 0.498, "scores": {"政策": 40, "基本面": 50, "技术面": 38, "资金面": 35, "情绪面": 58}, "comp": 42.8, "ma_s": 25, "stage": "退潮", "icon": "⚫", "tag": "WAIT", "color": "#445566", "bg": "#1a2530", "sig": "减仓", "sig_col": "#ff8800", "desc": "趋势向下+资金持续流出", "url": "https://fund.eastmoney.com/512690.html"}, "518880": {"sec": "黄金", "code": "518880", "name": "黄金ETF华安", "change": 3.35, "price": 10.024, "scores": {"政策": 40, "基本面": 50, "技术面": 100, "资金面": 35, "情绪面": 72}, "comp": 64.2, "ma_s": 70, "stage": "分歧", "icon": "🟣", "tag": "SELL", "color": "#af52de", "bg": "#330055", "sig": "持有", "sig_col": "#ffaa00", "desc": "内部分化+宽幅震荡", "url": "https://fund.eastmoney.com/518880.html"}, "512800": {"sec": "银行", "code": "512800", "name": "银行ETF华宝", "change": 0.0, "price": 0.802, "scores": {"政策": 40, "基本面": 68, "技术面": 85, "资金面": 35, "情绪面": 58}, "comp": 58.6, "ma_s": 90, "stage": "启动", "icon": "🔵", "tag": "BUY", "color": "#00b4ff", "bg": "#003d55", "sig": "持有", "sig_col": "#ffaa00", "desc": "量能温和放大+均线收敛", "url": "https://fund.eastmoney.com/512800.html"}}, "sectors": [{"name": "重组蛋白", "change": 7.12, "flow": 827573184.0, "fr": 8.82, "code": "BK1063"}, {"name": "CRO", "change": 6.25, "flow": 1865886224.0, "fr": 6.45, "code": "BK0899"}, {"name": "CAR-T细胞疗法", "change": 5.52, "flow": 1151893328.0, "fr": 7.04, "code": "BK0986"}, {"name": "创新药", "change": 5.24, "flow": 5589484800.0, "fr": 6.23, "code": "BK1106"}, {"name": "CPO概念", "change": 5.04, "flow": 7248221696.0, "fr": 5.33, "code": "BK1128"}, {"name": "阿兹海默", "change": 4.42, "flow": 305903216.0, "fr": 2.77, "code": "BK0894"}, {"name": "减肥药", "change": 4.36, "flow": 1213266208.0, "fr": 5.03, "code": "BK1146"}, {"name": "免疫治疗", "change": 4.35, "flow": 621286560.0, "fr": 4.49, "code": "BK0698"}, {"name": "单抗概念", "change": 4.23, "flow": 1662004416.0, "fr": 5.57, "code": "BK0870"}, {"name": "肝炎概念", "change": 4.22, "flow": 783116144.0, "fr": 3.16, "code": "BK1078"}, {"name": "昨日打二板以上表现", "change": 4.19, "flow": -516402240.0, "fr": -5.19, "code": "BK1645"}, {"name": "痘病毒防治", "change": 4.04, "flow": 972385200.0, "fr": 6.66, "code": "BK1085"}, {"name": "病原体防治", "change": 3.85, "flow": 2437275904.0, "fr": 4.47, "code": "BK1657"}, {"name": "病毒防治", "change": 3.79, "flow": 1740548240.0, "fr": 5.48, "code": "BK0675"}, {"name": "百元股", "change": 3.66, "flow": 3236614144.0, "fr": 0.93, "code": "BK1059"}, {"name": "Chiplet概念", "change": 3.63, "flow": 803377920.0, "fr": 2.05, "code": "BK1101"}, {"name": "独家药品", "change": 3.6, "flow": 592426592.0, "fr": 4.65, "code": "BK0676"}, {"name": "超级真菌", "change": 3.58, "flow": 1033411696.0, "fr": 7.33, "code": "BK0862"}, {"name": "精准诊断", "change": 3.5, "flow": 720495840.0, "fr": 4.58, "code": "BK1659"}, {"name": "创新医疗服务", "change": 3.39, "flow": 2191875328.0, "fr": 5.33, "code": "BK1658"}, {"name": "AI制药（医疗）", "change": 3.38, "flow": 953226304.0, "fr": 4.48, "code": "BK1170"}, {"name": "幽门螺杆菌概念", "change": 3.38, "flow": 713395168.0, "fr": 5.18, "code": "BK1056"}, {"name": "体外诊断概念", "change": 3.33, "flow": 594766416.0, "fr": 3.72, "code": "BK0841"}, {"name": "流感", "change": 3.33, "flow": 1818550640.0, "fr": 5.47, "code": "BK0906"}, {"name": "基因测序", "change": 3.32, "flow": -34237440.0, "fr": -0.25, "code": "BK0693"}, {"name": "PCB", "change": 3.18, "flow": 3074918144.0, "fr": 3.45, "code": "BK0877"}, {"name": "同步磁阻电机", "change": 3.15, "flow": 287195194.0, "fr": 10.55, "code": "BK1131"}, {"name": "精准医疗", "change": 3.11, "flow": 555195840.0, "fr": 3.47, "code": "BK0806"}, {"name": "腾讯云", "change": 3.1, "flow": 491073504.0, "fr": 2.46, "code": "BK1189"}, {"name": "2025三季报扭亏", "change": 3.06, "flow": 166105948.0, "fr": 5.75, "code": "BK1628"}], "indices": {"000001": {"name": "上证指数", "price": 3948.55, "change": 1.46, "url": "https://quote.eastmoney.com/sz000001.html"}, "000300": {"name": "沪深300", "price": 4526.07, "change": 1.71, "url": "https://quote.eastmoney.com/sz000300.html"}, "399006": {"name": "创业板指", "price": 3247.52, "change": 1.96, "url": "https://quote.eastmoney.com/sz399006.html"}, "000688": {"name": "科创50", "price": 1298.2, "change": 3.33, "url": "https://quote.eastmoney.com/sz000688.html"}}, "sentiment": {"up": 56.69, "down": 1.46, "ratio": 38.82876712328767, "url": "https://quote.eastmoney.com/sz000001.html"}, "policy_news": [{"title": "央行：保持流动性合理充裕", "time": "2026-04-01", "url": "https://www.pbc.gov.cn/"}, {"title": "证监会：推动资本市场高质量发展", "time": "2026-04-01", "url": "https://www.csrc.gov.cn/"}]}
+{
+  "updated": "2026-04-01 20:43:42",
+  "news": [
+    {
+      "time": "20:43",
+      "title": "财联社4月1日电，巴西国家石油公司将航空燃油价格上调55%。",
+      "sectors": [
+        "能源"
+      ],
+      "url": "https://www.cls.cn/detail/2332479",
+      "id": "2332479"
+    },
+    {
+      "time": "20:42",
+      "title": "德国新规：加油站一天只准涨价一次",
+      "sectors": [
+        "汽车"
+      ],
+      "url": "https://www.cls.cn/detail/2332478",
+      "id": "2332478"
+    },
+    {
+      "time": "20:40",
+      "title": "欧菲光2025年营收221.50亿元 经营韧性呈现、创新动能不减",
+      "sectors": [
+        "AI算力",
+        "消费"
+      ],
+      "url": "https://www.cls.cn/detail/2332475",
+      "id": "2332475"
+    },
+    {
+      "time": "20:38",
+      "title": "现代汽车和起亚3月销量同比一降一升",
+      "sectors": [
+        "汽车"
+      ],
+      "url": "https://www.cls.cn/detail/2332473",
+      "id": "2332473"
+    },
+    {
+      "time": "20:35",
+      "title": "2025年上海离境退税销售额同比增长80.5%",
+      "sectors": [
+        "宏观"
+      ],
+      "url": "https://www.cls.cn/detail/2332469",
+      "id": "2332469"
+    },
+    {
+      "time": "20:31",
+      "title": "财联社4月1日电，美国2月不含汽车和汽油的零售销售环比增长0.4%；预期增长0.",
+      "sectors": [
+        "汽车"
+      ],
+      "url": "https://www.cls.cn/detail/2332467",
+      "id": "2332467"
+    },
+    {
+      "time": "20:30",
+      "title": "江顺科技：公司未向海外公司寄送数据中心液冷板样品",
+      "sectors": [
+        "军工",
+        "有色"
+      ],
+      "url": "https://www.cls.cn/detail/2332465",
+      "id": "2332465"
+    },
+    {
+      "time": "20:30",
+      "title": "财联社4月1日电，美国2月零售销售月率0.6%，预期0.5%，前值由-0.20%",
+      "sectors": [
+        "宏观"
+      ],
+      "url": "https://www.cls.cn/detail/2332464",
+      "id": "2332464"
+    },
+    {
+      "time": "20:29",
+      "title": "花旗：上调中银香港目标价至49.7港元 维持“买入”评级",
+      "sectors": [
+        "宏观"
+      ],
+      "url": "https://www.cls.cn/detail/2332463",
+      "id": "2332463"
+    },
+    {
+      "time": "20:28",
+      "title": "财联社4月1日电，俄罗斯外交部表示，预计欧佩克+监督委员会将讨论油价上涨问题。",
+      "sectors": [
+        "宏观"
+      ],
+      "url": "https://www.cls.cn/detail/2332462",
+      "id": "2332462"
+    },
+    {
+      "time": "20:28",
+      "title": "美以空袭美原驻伊朗使馆区域",
+      "sectors": [
+        "宏观"
+      ],
+      "url": "https://www.cls.cn/detail/2332461",
+      "id": "2332461"
+    },
+    {
+      "time": "20:27",
+      "title": "英国央行行长贝利：市场对加息预期的定价有些操之过急",
+      "sectors": [
+        "宏观"
+      ],
+      "url": "https://www.cls.cn/detail/2332460",
+      "id": "2332460"
+    },
+    {
+      "time": "20:22",
+      "title": "财联社4月1日电，富国银行将ARM目标股价从165美元上调至175美元。",
+      "sectors": [
+        "银行"
+      ],
+      "url": "https://www.cls.cn/detail/2332456",
+      "id": "2332456"
+    },
+    {
+      "time": "20:22",
+      "title": "充电桩涨价潮来袭 行业竞争有望告别“低价内卷”",
+      "sectors": [
+        "电力"
+      ],
+      "url": "https://www.cls.cn/detail/2332455",
+      "id": "2332455"
+    },
+    {
+      "time": "20:20",
+      "title": "财联社4月1日电，现代汽车美国公司3月份销量同比增长3%。",
+      "sectors": [
+        "汽车"
+      ],
+      "url": "https://www.cls.cn/detail/2332454",
+      "id": "2332454"
+    },
+    {
+      "time": "20:18",
+      "title": "财联社4月1日电，富国银行将3M公司目标股价从175美元下调至160美元。",
+      "sectors": [
+        "银行"
+      ],
+      "url": "https://www.cls.cn/detail/2332452",
+      "id": "2332452"
+    },
+    {
+      "time": "20:17",
+      "title": "气象局最新预测：今年将有7至9个台风登陆或影响我国沿海",
+      "sectors": [
+        "宏观"
+      ],
+      "url": "https://www.cls.cn/detail/2332446",
+      "id": "2332446"
+    },
+    {
+      "time": "20:15",
+      "title": "财联社4月1日电，美国3月ADP就业人数增加6.2万人，预估为增加4万人，前值为",
+      "sectors": [
+        "宏观"
+      ],
+      "url": "https://www.cls.cn/detail/2332444",
+      "id": "2332444"
+    },
+    {
+      "time": "20:14",
+      "title": "美国法官裁定白宫“断供”公共媒体违宪",
+      "sectors": [
+        "宏观"
+      ],
+      "url": "https://www.cls.cn/detail/2332436",
+      "id": "2332436"
+    },
+    {
+      "time": "20:13",
+      "title": "【风口研报·公司】3D视觉与英伟达Jetson Thor平台适配，这家公司细分产品市占率超70%，与",
+      "sectors": [
+        "宏观"
+      ],
+      "url": "https://www.cls.cn/detail/2332064",
+      "id": "2332064"
+    },
+    {
+      "time": "20:13",
+      "title": "财联社4月1日电，奥本海默将美国生物技术企业Biogen公司目标股价从250美元",
+      "sectors": [
+        "宏观"
+      ],
+      "url": "https://www.cls.cn/detail/2332432",
+      "id": "2332432"
+    },
+    {
+      "time": "20:11",
+      "title": "阿联酋已拦截超2000架无人机",
+      "sectors": [
+        "宏观"
+      ],
+      "url": "https://www.cls.cn/detail/2332430",
+      "id": "2332430"
+    },
+    {
+      "time": "20:01",
+      "title": "财联社4月1日电，波罗的海干散货指数涨1.75%，至2030点。",
+      "sectors": [
+        "宏观"
+      ],
+      "url": "https://www.cls.cn/detail/2332424",
+      "id": "2332424"
+    },
+    {
+      "time": "20:00",
+      "title": "财联社4月1日电，美国国家橄榄球联盟（NFL）批准以超过110亿美元的估值，将拉",
+      "sectors": [
+        "宏观"
+      ],
+      "url": "https://www.cls.cn/detail/2332422",
+      "id": "2332422"
+    },
+    {
+      "time": "19:58",
+      "title": "美联储巴尔金：预期通胀进展缓慢 不会迅速回到目标",
+      "sectors": [
+        "消费"
+      ],
+      "url": "https://www.cls.cn/detail/2332421",
+      "id": "2332421"
+    },
+    {
+      "time": "19:58",
+      "title": "4月1日周三《新闻联播》要闻19条",
+      "sectors": [
+        "军工",
+        "新能源"
+      ],
+      "url": "https://www.cls.cn/detail/2332416",
+      "id": "2332416"
+    },
+    {
+      "time": "19:55",
+      "title": "交易员称美股本轮劲扬主要由空头回补所致 并非伊朗和平前景",
+      "sectors": [
+        "宏观"
+      ],
+      "url": "https://www.cls.cn/detail/2332417",
+      "id": "2332417"
+    },
+    {
+      "time": "19:51",
+      "title": "美股黄金股盘前续涨",
+      "sectors": [
+        "贵金属"
+      ],
+      "url": "https://www.cls.cn/detail/2332413",
+      "id": "2332413"
+    },
+    {
+      "time": "19:49",
+      "title": "小鹏副总裁魏斌已于近期离职",
+      "sectors": [
+        "宏观"
+      ],
+      "url": "https://www.cls.cn/detail/2332403",
+      "id": "2332403"
+    },
+    {
+      "time": "19:48",
+      "title": "胜蓝股份：控股股东及部分董事拟合计减持不超3.19%公司股份",
+      "sectors": [
+        "宏观"
+      ],
+      "url": "https://www.cls.cn/detail/2332402",
+      "id": "2332402"
+    }
+  ],
+  "sectors": [
+    {
+      "name": "医疗研发外包",
+      "change": 7.49,
+      "volume": 6203478,
+      "code": "BK1600",
+      "url": "https://quote.eastmoney.com/center/boardlist.html#concept_board"
+    },
+    {
+      "name": "洗护用品",
+      "change": 7.36,
+      "volume": 233213,
+      "code": "BK1496",
+      "url": "https://quote.eastmoney.com/center/boardlist.html#concept_board"
+    },
+    {
+      "name": "医美耗材",
+      "change": 6.25,
+      "volume": 77444,
+      "code": "BK1500",
+      "url": "https://quote.eastmoney.com/center/boardlist.html#concept_board"
+    },
+    {
+      "name": "其他生物制品",
+      "change": 5.65,
+      "volume": 4661742,
+      "code": "BK1596",
+      "url": "https://quote.eastmoney.com/center/boardlist.html#concept_board"
+    },
+    {
+      "name": "食用菌",
+      "change": 5.65,
+      "volume": 390299,
+      "code": "BK1517",
+      "url": "https://quote.eastmoney.com/center/boardlist.html#concept_board"
+    },
+    {
+      "name": "综合电力设备商",
+      "change": 5.55,
+      "volume": 2633670,
+      "code": "BK1323",
+      "url": "https://quote.eastmoney.com/center/boardlist.html#concept_board"
+    },
+    {
+      "name": "化学制剂",
+      "change": 5.24,
+      "volume": 28580672,
+      "code": "BK1594",
+      "url": "https://quote.eastmoney.com/center/boardlist.html#concept_board"
+    },
+    {
+      "name": "玻纤制造",
+      "change": 5.04,
+      "volume": 4879859,
+      "code": "BK1462",
+      "url": "https://quote.eastmoney.com/center/boardlist.html#concept_board"
+    },
+    {
+      "name": "医疗服务",
+      "change": 5.03,
+      "volume": 12549189,
+      "code": "BK0727",
+      "url": "https://quote.eastmoney.com/center/boardlist.html#concept_board"
+    },
+    {
+      "name": "集成电路制造",
+      "change": 4.94,
+      "volume": 2283211,
+      "code": "BK1329",
+      "url": "https://quote.eastmoney.com/center/boardlist.html#concept_board"
+    },
+    {
+      "name": "生物制品",
+      "change": 4.83,
+      "volume": 7223483,
+      "code": "BK1044",
+      "url": "https://quote.eastmoney.com/center/boardlist.html#concept_board"
+    },
+    {
+      "name": "化学制药",
+      "change": 4.68,
+      "volume": 36644275,
+      "code": "BK0465",
+      "url": "https://quote.eastmoney.com/center/boardlist.html#concept_board"
+    },
+    {
+      "name": "光伏加工设备",
+      "change": 4.39,
+      "volume": 2410428,
+      "code": "BK1317",
+      "url": "https://quote.eastmoney.com/center/boardlist.html#concept_board"
+    },
+    {
+      "name": "分立器件",
+      "change": 4.36,
+      "volume": 1788775,
+      "code": "BK1327",
+      "url": "https://quote.eastmoney.com/center/boardlist.html#concept_board"
+    },
+    {
+      "name": "宠物食品",
+      "change": 4.34,
+      "volume": 277813,
+      "code": "BK1507",
+      "url": "https://quote.eastmoney.com/center/boardlist.html#concept_board"
+    },
+    {
+      "name": "医疗美容",
+      "change": 4.19,
+      "volume": 251275,
+      "code": "BK1253",
+      "url": "https://quote.eastmoney.com/center/boardlist.html#concept_board"
+    },
+    {
+      "name": "酒店",
+      "change": 4.16,
+      "volume": 976223,
+      "code": "BK1560",
+      "url": "https://quote.eastmoney.com/center/boardlist.html#concept_board"
+    },
+    {
+      "name": "印制电路板",
+      "change": 4.15,
+      "volume": 8671275,
+      "code": "BK1340",
+      "url": "https://quote.eastmoney.com/center/boardlist.html#concept_board"
+    },
+    {
+      "name": "游戏Ⅲ",
+      "change": 4.0,
+      "volume": 8681649,
+      "code": "BK1301",
+      "url": "https://quote.eastmoney.com/center/boardlist.html#concept_board"
+    },
+    {
+      "name": "游戏Ⅱ",
+      "change": 4.0,
+      "volume": 8681649,
+      "code": "BK1046",
+      "url": "https://quote.eastmoney.com/center/boardlist.html#concept_board"
+    }
+  ],
+  "indices": {
+    "000001": {
+      "name": "上证指数",
+      "price": "3948.55",
+      "change": 1.46,
+      "url": "https://quote.eastmoney.com/sh000001.html"
+    },
+    "000300": {
+      "name": "沪深300",
+      "price": "4526.07",
+      "change": 1.71,
+      "url": "https://quote.eastmoney.com/sh000300.html"
+    },
+    "399006": {
+      "name": "创业板指",
+      "price": "3247.52",
+      "change": 1.96,
+      "url": "https://quote.eastmoney.com/sz399006.html"
+    },
+    "000688": {
+      "name": "科创50",
+      "price": "1298.20",
+      "change": 3.33,
+      "url": "https://quote.eastmoney.com/sh000688.html"
+    },
+    "000016": {
+      "name": "上证50",
+      "price": "2878.79",
+      "change": 1.86,
+      "url": "https://quote.eastmoney.com/sh000016.html"
+    }
+  },
+  "results": {
+    "513310": {
+      "name": "中韩半导体ETF",
+      "code": "513310",
+      "change": 2.8,
+      "stage": "启动",
+      "comp": 82,
+      "sig": "做多",
+      "sig_col": "#00c060",
+      "scores": {
+        "政策": 72,
+        "技术面": 88,
+        "资金面": 75,
+        "基本面": 60,
+        "情绪面": 70
+      },
+      "url": "https://quote.eastmoney.com/sz513310.html"
+    },
+    "512680": {
+      "name": "航空航天ETF华夏",
+      "code": "512680",
+      "change": 1.9,
+      "stage": "高潮",
+      "comp": 75,
+      "sig": "持有",
+      "sig_col": "#f39c12",
+      "scores": {
+        "政策": 85,
+        "技术面": 70,
+        "资金面": 72,
+        "基本面": 65,
+        "情绪面": 80
+      },
+      "url": "https://quote.eastmoney.com/sz512680.html"
+    },
+    "159502": {
+      "name": "标普生物科技ETF",
+      "code": "159502",
+      "change": 3.1,
+      "stage": "发酵",
+      "comp": 70,
+      "sig": "持有",
+      "sig_col": "#f39c12",
+      "scores": {
+        "政策": 65,
+        "技术面": 75,
+        "资金面": 68,
+        "基本面": 72,
+        "情绪面": 65
+      },
+      "url": "https://quote.eastmoney.com/sz159502.html"
+    },
+    "515880": {
+      "name": "通信ETF华夏",
+      "code": "515880",
+      "change": 1.2,
+      "stage": "分歧",
+      "comp": 58,
+      "sig": "减仓",
+      "sig_col": "#e74c3c",
+      "scores": {
+        "政策": 60,
+        "技术面": 62,
+        "资金面": 55,
+        "基本面": 58,
+        "情绪面": 50
+      },
+      "url": "https://quote.eastmoney.com/sz515880.html"
+    },
+    "518880": {
+      "name": "黄金ETF华安",
+      "code": "518880",
+      "change": 0.8,
+      "stage": "启动",
+      "comp": 80,
+      "sig": "加仓",
+      "sig_col": "#00c060",
+      "scores": {
+        "政策": 70,
+        "技术面": 85,
+        "资金面": 80,
+        "基本面": 75,
+        "情绪面": 75
+      },
+      "url": "https://quote.eastmoney.com/sh518880.html"
+    },
+    "159825": {
+      "name": "农业ETF富国",
+      "code": "159825",
+      "change": 1.5,
+      "stage": "启动",
+      "comp": 65,
+      "sig": "做多",
+      "sig_col": "#00c060",
+      "scores": {
+        "政策": 78,
+        "技术面": 68,
+        "资金面": 60,
+        "基本面": 62,
+        "情绪面": 55
+      },
+      "url": "https://quote.eastmoney.com/sz159825.html"
+    },
+    "512660": {
+      "name": "军工ETF国泰",
+      "code": "512660",
+      "change": 2.1,
+      "stage": "高潮",
+      "comp": 73,
+      "sig": "持有",
+      "sig_col": "#f39c12",
+      "scores": {
+        "政策": 90,
+        "技术面": 72,
+        "资金面": 70,
+        "基本面": 68,
+        "情绪面": 72
+      },
+      "url": "https://quote.eastmoney.com/sz512660.html"
+    }
+  }
+}
