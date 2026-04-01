@@ -3,56 +3,52 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
-<title>A股全局一屏监测 v12</title>
+<title>A股全局一屏实时监测 v13</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 a{text-decoration:none}
 html,body{height:100%;overflow:hidden}
 body{background:#090e18;color:#c8d8e8;font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;font-size:12px}
+.wrap{height:100vh;display:grid;grid-template-rows:50px 20px 1fr 100px 1fr 1.1fr 30px;gap:1px;background:#162030}
 
-/* ═══ 整体七行一屏 ═══ */
-.wrap{height:100vh;display:grid;grid-template-rows:52px 22px 1fr 110px 1fr 1.1fr 32px;gap:1px;background:#162030}
-
-/* ═══ L1 顶栏：标题+热度+消息滚动+指数 ═══ */
+/* L1 */
 .hdr{background:#08101c;display:flex;align-items:center;padding:0 10px;gap:0;overflow:hidden}
-.ttl{font-size:11px;font-weight:700;color:#00a4ff;letter-spacing:0.3px;white-space:nowrap;flex-shrink:0;margin-right:8px}
+.ttl{font-size:10px;font-weight:700;color:#00a4ff;letter-spacing:0.3px;white-space:nowrap;flex-shrink:0;margin-right:8px}
 .ht{display:flex;align-items:center;gap:5px;flex-shrink:0}
 .hl{font-size:9px;color:#3a5060}
-.hv{font-size:10px;font-weight:700;color:#ffaa00}
-.hbr{width:40px;height:3px;background:#162030;border-radius:2px;overflow:hidden;flex-shrink:0}
-.hbar{height:100%;background:#ffaa00;width:60%;border-radius:2px}
-.sep{width:1px;height:20px;background:#162030;flex-shrink:0;margin:0 6px}
-
-/* 消息滚动 */
-.nbar{flex:1;overflow:hidden;position:relative;min-width:0}
-.ntrack{display:flex;gap:12px;animation:nscroll 60s linear infinite;white-space:nowrap}
+.hv{font-size:10px;font-weight:700;color:#ff4040}
+.hbr{width:38px;height:3px;background:#162030;border-radius:2px;overflow:hidden;flex-shrink:0}
+.hbar{height:100%;background:#ff4040;width:69%;border-radius:2px;transition:width 1s ease}
+.dot2{width:5px;height:5px;background:#ff4040;border-radius:50%;animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+.sep{width:1px;height:18px;background:#162030;flex-shrink:0;margin:0 5px}
+.nbar{flex:1;overflow:hidden;position:relative;min-width:0;height:32px;display:flex;align-items:center}
+.ntrack{display:flex;gap:10px;animation:nscroll 80s linear infinite;white-space:nowrap;align-items:center;padding:0 5px}
 .ntrack:hover{animation-play-state:paused}
 @keyframes nscroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-.nitem{display:inline-flex;align-items:center;gap:4px;flex-shrink:0}
-.nt{font-size:9px;color:#3a5060;font-weight:600}
-.nn{font-size:10px;color:#a0b8cc;max-width:200px;overflow:hidden;text-overflow:ellipsis}
-.ng{display:flex;gap:2px}
-.nb{width:4px;height:4px;background:#00a4ff;border-radius:50%;flex-shrink:0}
-
-/* 指数 */
+.nc{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:3px;cursor:pointer;flex-shrink:0;transition:background 0.15s}
+.nc:hover{background:#111d2a}
+.nt{font-size:9px;color:#3a5060;font-weight:600;flex-shrink:0}
+.nn{font-size:10px;color:#b0c4d8;max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ng{display:flex;gap:3px;flex-shrink:0}
 .ird{display:flex;gap:3px;flex-shrink:0;margin-left:8px}
-.ib{display:flex;flex-direction:column;align-items:center;padding:2px 7px;background:#0e1622;border:1px solid #162030;border-radius:4px;cursor:pointer;min-width:54px}
+.ib{display:flex;flex-direction:column;align-items:center;padding:2px 6px;background:#0e1622;border:1px solid #162030;border-radius:4px;cursor:pointer;min-width:52px;transition:border-color 0.2s}
 .ib:hover{border-color:#00a4ff}
-.in{font-size:7px;color:#3a5060;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:44px}
+.in{font-size:7px;color:#3a5060;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:42px}
 .ip{font-size:11px;font-weight:700;line-height:1.2}
 .ic{font-size:9px;font-weight:600}
 .ts{font-size:9px;color:#3a5060;margin-left:4px;flex-shrink:0}
 
-/* ═══ L2 警告 ═══ */
-.warn{background:#241100;display:none;align-items:center;justify-content:center}
+/* L2 */
+.warn{background:#1a0800;display:flex;align-items:center;justify-content:center}
 .wtxt{font-size:10px;color:#ff8000;font-weight:600}
 
-/* ═══ L3 板块+热力图 ═══ */
+/* L3 */
 .sec-row{display:grid;grid-template-columns:1fr 1fr;gap:1px}
 .cl{background:#0e1622;display:flex;flex-direction:column;overflow:hidden}
-.shd{padding:3px 10px;font-size:9px;font-weight:700;color:#3a5060;background:#08101c;display:flex;align-items:center;gap:5px;flex-shrink:0}
+.shd{padding:3px 10px;font-size:9px;font-weight:700;color:#3a5060;background:#08101c;display:flex;align-items:center;gap:5px;flex-shrink:0;letter-spacing:0.2px}
 .sb2{padding:2px 0;flex:1;display:flex;flex-direction:column;justify-content:space-around}
-.sb-r{display:grid;grid-template-columns:14px 1fr 40px 36px;align-items:center;gap:3px;padding:2px 8px;cursor:pointer;border-radius:3px}
+.sb-r{display:grid;grid-template-columns:14px 1fr 40px 36px;align-items:center;gap:3px;padding:2px 8px;cursor:pointer;border-radius:3px;transition:background 0.15s}
 .sb-r:hover{background:#111d2a}
 .sr{font-size:9px;color:#3a5060;text-align:center}
 .sbw{height:3px;background:#162030;border-radius:2px;overflow:hidden}
@@ -60,37 +56,36 @@ body{background:#090e18;color:#c8d8e8;font-family:-apple-system,BlinkMacSystemFo
 .sn{font-size:10px;color:#c8d8e8;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:500}
 .sc{font-size:10px;font-weight:700;text-align:right}
 .hm2{padding:3px;display:grid;grid-template-columns:repeat(6,1fr);grid-template-rows:repeat(2,1fr);gap:3px;flex:1}
-.hmb{border-radius:4px;padding:3px 2px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;cursor:pointer;transition:transform 0.1s;opacity:0.9}
-.hmb:hover{transform:scale(1.07);opacity:1;z-index:2;box-shadow:0 2px 8px rgba(0,0,0,0.5)}
+.hmb{border-radius:4px;padding:3px 2px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:transform 0.1s,opacity 0.1s;opacity:0.9}
+.hmb:hover{transform:scale(1.08);opacity:1;z-index:2;box-shadow:0 2px 10px rgba(0,0,0,0.5)}
 .hmn{font-size:8px;color:#fff;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100%;text-align:center;font-weight:500;line-height:1.2}
 .hmc{font-size:11px;font-weight:700;color:#fff}
 
-/* ═══ L4 消息面 ═══ */
+/* L4 */
 .nrow{background:#0c1520;display:flex;flex-direction:column;overflow:hidden}
 .nhdr{display:flex;align-items:center;padding:2px 10px;gap:6px;flex-shrink:0}
 .nlive{display:flex;align-items:center;gap:4px}
-.dot2{width:5px;height:5px;background:#ff4040;border-radius:50%;animation:pulse 1.5s infinite}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.8)}}
-.nl{font-size:9px;color:#ff6060;font-weight:700}
+.nl{font-size:9px;color:#ff4040;font-weight:700}
 .nsrc{font-size:9px;color:#3a5060}
-.nscroll-outer{flex:1;overflow:hidden;position:relative}
-.nscroll-outer::after{content:'';position:absolute;right:0;top:0;bottom:0;width:30px;background:linear-gradient(to right,transparent,#0c1520)}
-.nc{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:3px;cursor:pointer;flex-shrink:0;transition:background 0.15s}
-.nc:hover{background:#111d2a}
-.nt{font-size:9px;color:#3a5060;font-weight:600;flex-shrink:0}
-.nn{font-size:10px;color:#b0c4d8;max-width:210px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.ng{display:flex;gap:3px;flex-shrink:0}
-.ntrack2{display:flex;gap:8px;padding:0 5px;overflow-x:auto;height:100%;align-items:center;flex-wrap:nowrap}
-.ntrack2::-webkit-scrollbar{height:0}
-.nc{height:26px}
-.nc:hover .nn{color:#00a4ff}
+.nscroll-outer{flex:1;overflow:hidden;position:relative;height:68px}
+.nscroll-outer::after{content:'';position:absolute;right:0;top:0;bottom:0;width:40px;background:linear-gradient(to right,transparent,#0c1520);pointer-events:none;z-index:1}
+.ntrack2{display:flex;gap:8px;padding:4px 5px;overflow-x:auto;height:100%;align-items:flex-start;flex-wrap:nowrap}
+.ntrack2::-webkit-scrollbar{height:2px}
+.ntrack2::-webkit-scrollbar-track{background:#0e1622}
+.ntrack2::-webkit-scrollbar-thumb{background:#162030;border-radius:1px}
+.nc2{display:inline-flex;align-items:center;gap:5px;padding:4px 8px;border-radius:4px;cursor:pointer;flex-shrink:0;transition:background 0.15s;border:1px solid transparent}
+.nc2:hover{background:#111d2a;border-color:#162030}
+.nc2:hover .nn2{color:#00a4ff}
+.nt2{font-size:9px;color:#3a5060;font-weight:600;flex-shrink:0}
+.nn2{font-size:10px;color:#b0c4d8;max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;transition:color 0.15s}
+.ng2{display:flex;gap:3px;flex-shrink:0}
 
-/* ═══ L5 ETF轮动 ═══ */
+/* L5 */
 .erow{background:#0e1622;display:flex;flex-direction:column;overflow:hidden}
 .er5{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;flex:1;overflow:hidden;background:#162030}
 .erc2{overflow:hidden;display:flex;flex-direction:column}
 .erhd{padding:3px 7px;font-size:10px;font-weight:700;display:flex;align-items:center;gap:4px;flex-shrink:0}
-.erbd{padding:2px;flex:1;overflow-y:auto}
+.erbd{padding:2px;flex:1;overflow-y:auto;overflow-x:hidden}
 .eri{display:flex;flex-direction:column;gap:1px;padding:2px 5px;border-radius:3px;cursor:pointer;margin-bottom:2px;transition:background 0.1s}
 .eri:hover{background:rgba(255,255,255,0.04)}
 .erc{font-size:8px;color:#3a5060}
@@ -101,14 +96,14 @@ body{background:#090e18;color:#c8d8e8;font-family:-apple-system,BlinkMacSystemFo
 ::-webkit-scrollbar{width:2px}
 ::-webkit-scrollbar-thumb{background:#162030}
 
-/* ═══ L6 五维表格 ═══ */
+/* L6 */
 .dim-row{background:#0e1622;display:flex;flex-direction:column;overflow:hidden}
 .dimt{overflow-y:auto;flex:1}
 .dtbl{width:100%;border-collapse:collapse}
 .dtbl th{background:#08101c;color:#3a5060;font-size:9px;font-weight:700;padding:2px 6px;text-align:center;border-bottom:1px solid #162030;white-space:nowrap}
 .dtbl td{padding:2px 6px;vertical-align:middle;border-bottom:1px solid #111d2a}
 .dtbl tr:hover{background:#111d2a}
-.sg{display:inline-block;padding:1px 4px;border-radius:3px;font-size:9px;font-weight:700;color:#fff;cursor:pointer}
+.sg{display:inline-block;padding:1px 4px;border-radius:3px;font-size:9px;font-weight:700;color:#fff}
 .en{color:#c8d8e8;font-size:10px;font-weight:500}
 .en:hover{color:#00a4ff}
 .t0{background:#003355;color:#00a4ff;padding:1px 4px;border-radius:3px;font-size:8px;font-weight:700}
@@ -117,7 +112,7 @@ body{background:#090e18;color:#c8d8e8;font-family:-apple-system,BlinkMacSystemFo
 .db{display:flex;gap:1px;height:3px;border-radius:1px;overflow:hidden;background:#162030;width:50px}
 .db div{height:100%}
 
-/* ═══ L7 底栏 ═══ */
+/* L7 */
 .ftr{grid-column:1/-1;background:#060a10;border-top:1px solid #162030;display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:1px}
 .ft{padding:3px 10px;font-size:9px;line-height:1.5}
 .ft b{display:block;margin-bottom:0}
@@ -130,332 +125,118 @@ body{background:#090e18;color:#c8d8e8;font-family:-apple-system,BlinkMacSystemFo
 .f2{background:#081810}
 .f2 b{color:#00c060}
 .f2 span{color:#00dd70}
+
+/* 刷新动画 */
+.spin{animation:spin 1s linear infinite;display:inline-block}
+@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
 </style>
 </head>
 <body>
 <div class="wrap">
 
-  <!-- L1 顶栏 -->
+  <!-- L1 -->
   <div class="hdr">
-    <span class="ttl">📊 A股全局一屏 04/01 20:00 BJT</span>
+    <span class="ttl">📊 A股实时监测 <span id="ut" style="color:#3a5060;font-weight:400">2026-04-01 20:06:36</span></span>
     <div class="ht">
       <div class="dot2"></div>
       <span class="hl">Heat</span>
       <div class="hbr"><div class="hbar"></div></div>
-      <span class="hv">60°</span>
+      <span class="hv">69° 贪婪</span>
     </div>
     <div class="sep"></div>
     <div class="nbar">
-      <div class="ntrack">
-        <a href="https://www.cls.cn/depth?id=1003" target="_blank" class="nc">
-<span class="nt">19:55</span>
-<span class="nn">交易员称美股本轮劲扬主要由空头回补所致</span>
-<span class="ng"><span style="background:#7f8c8d22;color:#7f8c8d;border:1px solid #7f8c8d44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap">宏观</span></span>
-</a><a href="https://www.cls.cn/depth?id=1003" target="_blank" class="nc">
-<span class="nt">19:51</span>
-<span class="nn">美股黄金股盘前续涨</span>
-<span class="ng"><span style="background:#ffd70022;color:#ffd700;border:1px solid #ffd70044;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap">贵金属</span></span>
-</a><a href="https://www.cls.cn/depth?id=1003" target="_blank" class="nc">
-<span class="nt">19:49</span>
-<span class="nn">小鹏副总裁魏斌已于近期离职</span>
-<span class="ng"><span style="background:#e74c3c22;color:#e74c3c;border:1px solid #e74c3c44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap">汽车</span></span>
-</a><a href="https://www.cls.cn/depth?id=1003" target="_blank" class="nc">
-<span class="nt">19:48</span>
-<span class="nn">胜蓝股份：控股股东及董事拟合计减持不超3.19%</span>
-<span class="ng"><span style="background:#7f8c8d22;color:#7f8c8d;border:1px solid #7f8c8d44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap">宏观</span></span>
-</a><a href="https://www.cls.cn/depth?id=1003" target="_blank" class="nc">
-<span class="nt">19:45</span>
-<span class="nn">现货黄金日内涨幅扩大至2%，报4760美元/盎司</span>
-<span class="ng"><span style="background:#ffd70022;color:#ffd700;border:1px solid #ffd70044;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap">贵金属</span></span>
-</a><a href="https://www.cls.cn/depth?id=1003" target="_blank" class="nc">
-<span class="nt">19:44</span>
-<span class="nn">美军意图扩大在格陵兰岛军事存在</span>
-<span class="ng"><span style="background:#c0392b22;color:#c0392b;border:1px solid #c0392b44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap">地缘</span></span>
-</a><a href="https://www.cls.cn/depth?id=1003" target="_blank" class="nc">
-<span class="nt">19:44</span>
-<span class="nn">伊朗称打击美预警机加油机部署地</span>
-<span class="ng"><span style="background:#c0392b22;color:#c0392b;border:1px solid #c0392b44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap">地缘</span></span>
-</a><a href="https://www.cls.cn/depth?id=1003" target="_blank" class="nc">
-<span class="nt">19:42</span>
-<span class="nn">光伏大规模退役潮来了 企业扎堆入局光伏回收赛道</span>
-<span class="ng"><span style="background:#f39c1222;color:#f39c12;border:1px solid #f39c1244;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap">光伏</span></span>
-</a><a href="https://www.cls.cn/depth?id=1003" target="_blank" class="nc">
-<span class="nt">19:40</span>
-<span class="nn">航发动力：2025年净利润同比减少26.27%</span>
-<span class="ng"><span style="background:#c0392b22;color:#c0392b;border:1px solid #c0392b44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap">军工</span></span>
-</a><a href="https://www.cls.cn/depth?id=1003" target="_blank" class="nc">
-<span class="nt">19:37</span>
-<span class="nn">李强在四川调研 着力推进新型电网建设</span>
-<span class="ng"><span style="background:#2980b922;color:#2980b9;border:1px solid #2980b944;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap">电力</span><span style="background:#f39c1222;color:#f39c12;border:1px solid #f39c1244;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap">光伏</span></span>
-</a><a href="https://www.cls.cn/depth?id=1003" target="_blank" class="nc">
-<span class="nt">19:35</span>
-<span class="nn">字节跳动AI编程产品TRAE SOLO推出独立客户端</span>
-<span class="ng"><span style="background:#7b5cf022;color:#7b5cf0;border:1px solid #7b5cf044;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap">AI应用</span></span>
-</a><a href="https://www.cls.cn/depth?id=1003" target="_blank" class="nc">
-<span class="nt">19:33</span>
-<span class="nn">中科院宣布下一代开源芯片研制计划</span>
-<span class="ng"><span style="background:#ff6b3522;color:#ff6b35;border:1px solid #ff6b3544;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap">半导体</span></span>
-</a><a href="https://www.cls.cn/depth?id=1003" target="_blank" class="nc">
-<span class="nt">19:30</span>
-<span class="nn">世界数据组织在北京正式启动运营</span>
-<span class="ng"><span style="background:#4a608022;color:#4a6080;border:1px solid #4a608044;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap">数据要素</span></span>
-</a><a href="https://www.cls.cn/depth?id=1003" target="_blank" class="nc">
-<span class="nt">19:28</span>
-<span class="nn">小鹏汽车新款P7+订单突破2万台</span>
-<span class="ng"><span style="background:#e74c3c22;color:#e74c3c;border:1px solid #e74c3c44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap">汽车</span></span>
-</a><a href="https://www.cls.cn/depth?id=1003" target="_blank" class="nc">
-<span class="nt">19:25</span>
-<span class="nn">国家能源局：加快新型储能项目落地</span>
-<span class="ng"><span style="background:#27ae6022;color:#27ae60;border:1px solid #27ae6044;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap">储能</span></span>
-</a>
-        <a href="https://www.cls.cn/depth?id=1003" target="_blank" class="nc">
-<span class="nt">19:55</span>
-<span class="nn">交易员称美股本轮劲扬主要由空头回补所致</span>
-<span class="ng"><span style="background:#7f8c8d22;color:#7f8c8d;border:1px solid #7f8c8d44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap">宏观</span></span>
-</a><a href="https://www.cls.cn/depth?id=1003" target="_blank" class="nc">
-<span class="nt">19:51</span>
-<span class="nn">美股黄金股盘前续涨</span>
-<span class="ng"><span style="background:#ffd70022;color:#ffd700;border:1px solid #ffd70044;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap">贵金属</span></span>
-</a><a href="https://www.cls.cn/depth?id=1003" target="_blank" class="nc">
-<span class="nt">19:49</span>
-<span class="nn">小鹏副总裁魏斌已于近期离职</span>
-<span class="ng"><span style="background:#e74c3c22;color:#e74c3c;border:1px solid #e74c3c44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap">汽车</span></span>
-</a><a href="https://www.cls.cn/depth?id=1003" target="_blank" class="nc">
-<span class="nt">19:48</span>
-<span class="nn">胜蓝股份：控股股东及董事拟合计减持不超3.19%</span>
-<span class="ng"><span style="background:#7f8c8d22;color:#7f8c8d;border:1px solid #7f8c8d44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap">宏观</span></span>
-</a><a href="https://www.cls.cn/depth?id=1003" target="_blank" class="nc">
-<span class="nt">19:45</span>
-<span class="nn">现货黄金日内涨幅扩大至2%，报4760美元/盎司</span>
-<span class="ng"><span style="background:#ffd70022;color:#ffd700;border:1px solid #ffd70044;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap">贵金属</span></span>
-</a><a href="https://www.cls.cn/depth?id=1003" target="_blank" class="nc">
-<span class="nt">19:44</span>
-<span class="nn">美军意图扩大在格陵兰岛军事存在</span>
-<span class="ng"><span style="background:#c0392b22;color:#c0392b;border:1px solid #c0392b44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap">地缘</span></span>
-</a><a href="https://www.cls.cn/depth?id=1003" target="_blank" class="nc">
-<span class="nt">19:44</span>
-<span class="nn">伊朗称打击美预警机加油机部署地</span>
-<span class="ng"><span style="background:#c0392b22;color:#c0392b;border:1px solid #c0392b44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap">地缘</span></span>
-</a><a href="https://www.cls.cn/depth?id=1003" target="_blank" class="nc">
-<span class="nt">19:42</span>
-<span class="nn">光伏大规模退役潮来了 企业扎堆入局光伏回收赛道</span>
-<span class="ng"><span style="background:#f39c1222;color:#f39c12;border:1px solid #f39c1244;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap">光伏</span></span>
-</a><a href="https://www.cls.cn/depth?id=1003" target="_blank" class="nc">
-<span class="nt">19:40</span>
-<span class="nn">航发动力：2025年净利润同比减少26.27%</span>
-<span class="ng"><span style="background:#c0392b22;color:#c0392b;border:1px solid #c0392b44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap">军工</span></span>
-</a><a href="https://www.cls.cn/depth?id=1003" target="_blank" class="nc">
-<span class="nt">19:37</span>
-<span class="nn">李强在四川调研 着力推进新型电网建设</span>
-<span class="ng"><span style="background:#2980b922;color:#2980b9;border:1px solid #2980b944;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap">电力</span><span style="background:#f39c1222;color:#f39c12;border:1px solid #f39c1244;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap">光伏</span></span>
-</a><a href="https://www.cls.cn/depth?id=1003" target="_blank" class="nc">
-<span class="nt">19:35</span>
-<span class="nn">字节跳动AI编程产品TRAE SOLO推出独立客户端</span>
-<span class="ng"><span style="background:#7b5cf022;color:#7b5cf0;border:1px solid #7b5cf044;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap">AI应用</span></span>
-</a><a href="https://www.cls.cn/depth?id=1003" target="_blank" class="nc">
-<span class="nt">19:33</span>
-<span class="nn">中科院宣布下一代开源芯片研制计划</span>
-<span class="ng"><span style="background:#ff6b3522;color:#ff6b35;border:1px solid #ff6b3544;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap">半导体</span></span>
-</a><a href="https://www.cls.cn/depth?id=1003" target="_blank" class="nc">
-<span class="nt">19:30</span>
-<span class="nn">世界数据组织在北京正式启动运营</span>
-<span class="ng"><span style="background:#4a608022;color:#4a6080;border:1px solid #4a608044;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap">数据要素</span></span>
-</a><a href="https://www.cls.cn/depth?id=1003" target="_blank" class="nc">
-<span class="nt">19:28</span>
-<span class="nn">小鹏汽车新款P7+订单突破2万台</span>
-<span class="ng"><span style="background:#e74c3c22;color:#e74c3c;border:1px solid #e74c3c44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap">汽车</span></span>
-</a><a href="https://www.cls.cn/depth?id=1003" target="_blank" class="nc">
-<span class="nt">19:25</span>
-<span class="nn">国家能源局：加快新型储能项目落地</span>
-<span class="ng"><span style="background:#27ae6022;color:#27ae60;border:1px solid #27ae6044;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap">储能</span></span>
-</a>
-      </div>
+      <div class="ntrack" id="tickerTrack"><a href="https://www.cls.cn/detail/2332424" target="_blank" class="nc"><span class="nt">20:01</span><span class="nn">财联社4月1日电，波罗的海干散货指数涨1.75%，至2030点。</span><span class="ng"><span style="background:#7f8c8d22;color:#7f8c8d;border:1px solid #7f8c8d44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap;display:inline-block">宏观</span></span></a><a href="https://www.cls.cn/detail/2332422" target="_blank" class="nc"><span class="nt">20:00</span><span class="nn">财联社4月1日电，美国国家橄榄球联盟（NFL）批准以超过110亿美元的估值，将拉</span><span class="ng"><span style="background:#7f8c8d22;color:#7f8c8d;border:1px solid #7f8c8d44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap;display:inline-block">宏观</span></span></a><a href="https://www.cls.cn/detail/2332421" target="_blank" class="nc"><span class="nt">19:58</span><span class="nn">美联储巴尔金：预期通胀进展缓慢 不会迅速回到目标</span><span class="ng"><span style="background:#e91e6322;color:#e91e63;border:1px solid #e91e6344;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap;display:inline-block">消费</span></span></a><a href="https://www.cls.cn/detail/2332416" target="_blank" class="nc"><span class="nt">19:58</span><span class="nn">4月1日周三《新闻联播》要闻19条</span><span class="ng"><span style="background:#c0392b22;color:#c0392b;border:1px solid #c0392b44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap;display:inline-block">军工</span><span style="background:#27ae6022;color:#27ae60;border:1px solid #27ae6044;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap;display:inline-block">新能源</span></span></a><a href="https://www.cls.cn/detail/2332417" target="_blank" class="nc"><span class="nt">19:55</span><span class="nn">交易员称美股本轮劲扬主要由空头回补所致 并非伊朗和平前景</span><span class="ng"><span style="background:#7f8c8d22;color:#7f8c8d;border:1px solid #7f8c8d44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap;display:inline-block">宏观</span></span></a><a href="https://www.cls.cn/detail/2332413" target="_blank" class="nc"><span class="nt">19:51</span><span class="nn">美股黄金股盘前续涨</span><span class="ng"><span style="background:#ffd70022;color:#ffd700;border:1px solid #ffd70044;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap;display:inline-block">贵金属</span></span></a><a href="https://www.cls.cn/detail/2332403" target="_blank" class="nc"><span class="nt">19:49</span><span class="nn">小鹏副总裁魏斌已于近期离职</span><span class="ng"><span style="background:#7f8c8d22;color:#7f8c8d;border:1px solid #7f8c8d44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap;display:inline-block">宏观</span></span></a><a href="https://www.cls.cn/detail/2332402" target="_blank" class="nc"><span class="nt">19:48</span><span class="nn">胜蓝股份：控股股东及部分董事拟合计减持不超3.19%公司股份</span><span class="ng"><span style="background:#7f8c8d22;color:#7f8c8d;border:1px solid #7f8c8d44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap;display:inline-block">宏观</span></span></a><a href="https://www.cls.cn/detail/2332400" target="_blank" class="nc"><span class="nt">19:46</span><span class="nn">财联社4月1日电，中国地震台网正式测定：04月01日19时20分在秘鲁（南纬7.</span><span class="ng"><span style="background:#7f8c8d22;color:#7f8c8d;border:1px solid #7f8c8d44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap;display:inline-block">宏观</span></span></a><a href="https://www.cls.cn/detail/2332398" target="_blank" class="nc"><span class="nt">19:45</span><span class="nn">奥来德：控股股东、实际控制人及一致行动人、部分高管拟合计减持不超过3%</span><span class="ng"><span style="background:#7f8c8d22;color:#7f8c8d;border:1px solid #7f8c8d44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap;display:inline-block">宏观</span></span></a><a href="https://www.cls.cn/detail/2332395" target="_blank" class="nc"><span class="nt">19:45</span><span class="nn">财联社4月1日电，现货黄金日内涨幅扩大至2%，报4760.32美元/盎司。</span><span class="ng"><span style="background:#ffd70022;color:#ffd700;border:1px solid #ffd70044;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap;display:inline-block">贵金属</span></span></a><a href="https://www.cls.cn/detail/2332394" target="_blank" class="nc"><span class="nt">19:44</span><span class="nn">美官员称美军意图扩大在格陵兰岛军事存在</span><span class="ng"><span style="background:#7f8c8d22;color:#7f8c8d;border:1px solid #7f8c8d44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap;display:inline-block">宏观</span></span></a><a href="https://www.cls.cn/detail/2332392" target="_blank" class="nc"><span class="nt">19:44</span><span class="nn">伊朗称打击美预警机加油机部署地</span><span class="ng"><span style="background:#c0392b22;color:#c0392b;border:1px solid #c0392b44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap;display:inline-block">军工</span></span></a><a href="https://www.cls.cn/detail/2332391" target="_blank" class="nc"><span class="nt">19:43</span><span class="nn">财联社4月1日电，上交所就喜临门控股股东及其关联方非经营性资金占用相关事项下发监</span><span class="ng"><span style="background:#7f8c8d22;color:#7f8c8d;border:1px solid #7f8c8d44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap;display:inline-block">宏观</span></span></a><a href="https://www.cls.cn/detail/2332388" target="_blank" class="nc"><span class="nt">19:42</span><span class="nn">光伏大规模退役潮来了 企业扎堆入局光伏回收赛道</span><span class="ng"><span style="background:#f39c1222;color:#f39c12;border:1px solid #f39c1244;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap;display:inline-block">光伏</span></span></a><a href="https://www.cls.cn/detail/2332387" target="_blank" class="nc"><span class="nt">19:41</span><span class="nn">美军弹药现缺口 美军欲调用反导系统被波兰拒绝</span><span class="ng"><span style="background:#7f8c8d22;color:#7f8c8d;border:1px solid #7f8c8d44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap;display:inline-block">宏观</span></span></a><a href="https://www.cls.cn/detail/2332386" target="_blank" class="nc"><span class="nt">19:40</span><span class="nn">航发动力：2025年净利润同比减少26.27% 拟10派0.72元</span><span class="ng"><span style="background:#7f8c8d22;color:#7f8c8d;border:1px solid #7f8c8d44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap;display:inline-block">宏观</span></span></a><a href="https://www.cls.cn/detail/2332383" target="_blank" class="nc"><span class="nt">19:38</span><span class="nn">湖北能源：副董事长、总经理涂山峰因到退休年龄辞职</span><span class="ng"><span style="background:#7f8c8d22;color:#7f8c8d;border:1px solid #7f8c8d44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap;display:inline-block">宏观</span></span></a><a href="https://www.cls.cn/detail/2332382" target="_blank" class="nc"><span class="nt">19:37</span><span class="nn">李强在四川调研时强调 着力推进新型电网建设 加快能源结构调整优化 为经济社会高质量发展提供有力支撑</span><span class="ng"><span style="background:#9933ff22;color:#9933ff;border:1px solid #9933ff44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap;display:inline-block">AI算力</span><span style="background:#f39c1222;color:#f39c12;border:1px solid #f39c1244;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap;display:inline-block">光伏</span></span></a><a href="https://www.cls.cn/detail/2332381" target="_blank" class="nc"><span class="nt">19:36</span><span class="nn">超捷股份：员工持股平台拟合计减持不超过1.33%</span><span class="ng"><span style="background:#7f8c8d22;color:#7f8c8d;border:1px solid #7f8c8d44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap;display:inline-block">宏观</span></span></a><a href="https://www.cls.cn/detail/2332424" target="_blank" class="nc"><span class="nt">20:01</span><span class="nn">财联社4月1日电，波罗的海干散货指数涨1.75%，至2030点。</span><span class="ng"><span style="background:#7f8c8d22;color:#7f8c8d;border:1px solid #7f8c8d44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap;display:inline-block">宏观</span></span></a><a href="https://www.cls.cn/detail/2332422" target="_blank" class="nc"><span class="nt">20:00</span><span class="nn">财联社4月1日电，美国国家橄榄球联盟（NFL）批准以超过110亿美元的估值，将拉</span><span class="ng"><span style="background:#7f8c8d22;color:#7f8c8d;border:1px solid #7f8c8d44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap;display:inline-block">宏观</span></span></a><a href="https://www.cls.cn/detail/2332421" target="_blank" class="nc"><span class="nt">19:58</span><span class="nn">美联储巴尔金：预期通胀进展缓慢 不会迅速回到目标</span><span class="ng"><span style="background:#e91e6322;color:#e91e63;border:1px solid #e91e6344;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap;display:inline-block">消费</span></span></a><a href="https://www.cls.cn/detail/2332416" target="_blank" class="nc"><span class="nt">19:58</span><span class="nn">4月1日周三《新闻联播》要闻19条</span><span class="ng"><span style="background:#c0392b22;color:#c0392b;border:1px solid #c0392b44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap;display:inline-block">军工</span><span style="background:#27ae6022;color:#27ae60;border:1px solid #27ae6044;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap;display:inline-block">新能源</span></span></a><a href="https://www.cls.cn/detail/2332417" target="_blank" class="nc"><span class="nt">19:55</span><span class="nn">交易员称美股本轮劲扬主要由空头回补所致 并非伊朗和平前景</span><span class="ng"><span style="background:#7f8c8d22;color:#7f8c8d;border:1px solid #7f8c8d44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap;display:inline-block">宏观</span></span></a><a href="https://www.cls.cn/detail/2332413" target="_blank" class="nc"><span class="nt">19:51</span><span class="nn">美股黄金股盘前续涨</span><span class="ng"><span style="background:#ffd70022;color:#ffd700;border:1px solid #ffd70044;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap;display:inline-block">贵金属</span></span></a><a href="https://www.cls.cn/detail/2332403" target="_blank" class="nc"><span class="nt">19:49</span><span class="nn">小鹏副总裁魏斌已于近期离职</span><span class="ng"><span style="background:#7f8c8d22;color:#7f8c8d;border:1px solid #7f8c8d44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap;display:inline-block">宏观</span></span></a><a href="https://www.cls.cn/detail/2332402" target="_blank" class="nc"><span class="nt">19:48</span><span class="nn">胜蓝股份：控股股东及部分董事拟合计减持不超3.19%公司股份</span><span class="ng"><span style="background:#7f8c8d22;color:#7f8c8d;border:1px solid #7f8c8d44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap;display:inline-block">宏观</span></span></a><a href="https://www.cls.cn/detail/2332400" target="_blank" class="nc"><span class="nt">19:46</span><span class="nn">财联社4月1日电，中国地震台网正式测定：04月01日19时20分在秘鲁（南纬7.</span><span class="ng"><span style="background:#7f8c8d22;color:#7f8c8d;border:1px solid #7f8c8d44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap;display:inline-block">宏观</span></span></a><a href="https://www.cls.cn/detail/2332398" target="_blank" class="nc"><span class="nt">19:45</span><span class="nn">奥来德：控股股东、实际控制人及一致行动人、部分高管拟合计减持不超过3%</span><span class="ng"><span style="background:#7f8c8d22;color:#7f8c8d;border:1px solid #7f8c8d44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap;display:inline-block">宏观</span></span></a><a href="https://www.cls.cn/detail/2332395" target="_blank" class="nc"><span class="nt">19:45</span><span class="nn">财联社4月1日电，现货黄金日内涨幅扩大至2%，报4760.32美元/盎司。</span><span class="ng"><span style="background:#ffd70022;color:#ffd700;border:1px solid #ffd70044;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap;display:inline-block">贵金属</span></span></a><a href="https://www.cls.cn/detail/2332394" target="_blank" class="nc"><span class="nt">19:44</span><span class="nn">美官员称美军意图扩大在格陵兰岛军事存在</span><span class="ng"><span style="background:#7f8c8d22;color:#7f8c8d;border:1px solid #7f8c8d44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap;display:inline-block">宏观</span></span></a><a href="https://www.cls.cn/detail/2332392" target="_blank" class="nc"><span class="nt">19:44</span><span class="nn">伊朗称打击美预警机加油机部署地</span><span class="ng"><span style="background:#c0392b22;color:#c0392b;border:1px solid #c0392b44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap;display:inline-block">军工</span></span></a><a href="https://www.cls.cn/detail/2332391" target="_blank" class="nc"><span class="nt">19:43</span><span class="nn">财联社4月1日电，上交所就喜临门控股股东及其关联方非经营性资金占用相关事项下发监</span><span class="ng"><span style="background:#7f8c8d22;color:#7f8c8d;border:1px solid #7f8c8d44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap;display:inline-block">宏观</span></span></a><a href="https://www.cls.cn/detail/2332388" target="_blank" class="nc"><span class="nt">19:42</span><span class="nn">光伏大规模退役潮来了 企业扎堆入局光伏回收赛道</span><span class="ng"><span style="background:#f39c1222;color:#f39c12;border:1px solid #f39c1244;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap;display:inline-block">光伏</span></span></a><a href="https://www.cls.cn/detail/2332387" target="_blank" class="nc"><span class="nt">19:41</span><span class="nn">美军弹药现缺口 美军欲调用反导系统被波兰拒绝</span><span class="ng"><span style="background:#7f8c8d22;color:#7f8c8d;border:1px solid #7f8c8d44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap;display:inline-block">宏观</span></span></a><a href="https://www.cls.cn/detail/2332386" target="_blank" class="nc"><span class="nt">19:40</span><span class="nn">航发动力：2025年净利润同比减少26.27% 拟10派0.72元</span><span class="ng"><span style="background:#7f8c8d22;color:#7f8c8d;border:1px solid #7f8c8d44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap;display:inline-block">宏观</span></span></a><a href="https://www.cls.cn/detail/2332383" target="_blank" class="nc"><span class="nt">19:38</span><span class="nn">湖北能源：副董事长、总经理涂山峰因到退休年龄辞职</span><span class="ng"><span style="background:#7f8c8d22;color:#7f8c8d;border:1px solid #7f8c8d44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap;display:inline-block">宏观</span></span></a><a href="https://www.cls.cn/detail/2332382" target="_blank" class="nc"><span class="nt">19:37</span><span class="nn">李强在四川调研时强调 着力推进新型电网建设 加快能源结构调整优化 为经济社会高质量发展提供有力支撑</span><span class="ng"><span style="background:#9933ff22;color:#9933ff;border:1px solid #9933ff44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap;display:inline-block">AI算力</span><span style="background:#f39c1222;color:#f39c12;border:1px solid #f39c1244;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap;display:inline-block">光伏</span></span></a><a href="https://www.cls.cn/detail/2332381" target="_blank" class="nc"><span class="nt">19:36</span><span class="nn">超捷股份：员工持股平台拟合计减持不超过1.33%</span><span class="ng"><span style="background:#7f8c8d22;color:#7f8c8d;border:1px solid #7f8c8d44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap;display:inline-block">宏观</span></span></a></div>
     </div>
-    <div class="ird">
-      <a href="https://quote.eastmoney.com/sz000001.html" target="_blank" class="ib"><div class="in">上证</div><div class="ip" style="color:#ff4040">3948.55</div><div class="ic" style="color:#ff4040">+1.46%</div></a><a href="https://quote.eastmoney.com/sz000300.html" target="_blank" class="ib"><div class="in">沪深300</div><div class="ip" style="color:#ff4040">4526.07</div><div class="ic" style="color:#ff4040">+1.71%</div></a><a href="https://quote.eastmoney.com/sz399006.html" target="_blank" class="ib"><div class="in">创业板</div><div class="ip" style="color:#ff4040">3247.52</div><div class="ic" style="color:#ff4040">+1.96%</div></a><a href="https://quote.eastmoney.com/sz000688.html" target="_blank" class="ib"><div class="in">科创50</div><div class="ip" style="color:#ff4040">1298.2</div><div class="ic" style="color:#ff4040">+3.33%</div></a>
-      <span class="ts">BJT</span>
-    </div>
+    <div class="ird"><a href="https://quote.eastmoney.com/sh000001.html" target="_blank" class="ib"><div class="in">上证指数</div><div class="ip" style="color:#ff4040">3948.55</div><div class="ic" style="color:#ff4040">+1.46%</div></a><a href="https://quote.eastmoney.com/sh000300.html" target="_blank" class="ib"><div class="in">沪深300</div><div class="ip" style="color:#ff4040">4526.07</div><div class="ic" style="color:#ff4040">+1.71%</div></a><a href="https://quote.eastmoney.com/sz399006.html" target="_blank" class="ib"><div class="in">创业板指</div><div class="ip" style="color:#ff4040">3247.52</div><div class="ic" style="color:#ff4040">+1.96%</div></a><a href="https://quote.eastmoney.com/sh000688.html" target="_blank" class="ib"><div class="in">科创50</div><div class="ip" style="color:#ff4040">1298.20</div><div class="ic" style="color:#ff4040">+3.33%</div></a><span class="ts">BJT</span></div>
   </div>
 
-  <!-- L2 警告 -->
-  <div class="warn">
-    <span class="wtxt">⚠️ 高热度预警 | 热度过热注意获利了结 | 板块高位分歧风险加剧 ⚠️</span>
+  <!-- L2 -->
+  <div class="warn" id="warnBar">
+    <span class="wtxt">⚠️ 高热度预警 | 板块高位分歧风险加剧，注意获利了结 ⚠️</span>
   </div>
 
-  <!-- L3 板块+热力图 -->
+  <!-- L3 -->
   <div class="sec-row">
     <div class="cl">
       <div class="shd">📊 [强势板块 Top5]</div>
-      <div class="sb2"><a href="https://quote.eastmoney.com/center/boardlist.html#concept_board" target="_blank" class="sb-r"><span class="sr">1</span><div class="sbw"><div class="sbb" style="width:32.04%;background:#ff4040"></div></div><span class="sn">重组蛋白</span><span class="sc" style="color:#ff4040">+7.12%</span></a><a href="https://quote.eastmoney.com/center/boardlist.html#concept_board" target="_blank" class="sb-r"><span class="sr">2</span><div class="sbw"><div class="sbb" style="width:28.125%;background:#ff4040"></div></div><span class="sn">CRO</span><span class="sc" style="color:#ff4040">+6.25%</span></a><a href="https://quote.eastmoney.com/center/boardlist.html#concept_board" target="_blank" class="sb-r"><span class="sr">3</span><div class="sbw"><div class="sbb" style="width:24.839999999999996%;background:#ff4040"></div></div><span class="sn">CAR-T细胞疗法</span><span class="sc" style="color:#ff4040">+5.52%</span></a><a href="https://quote.eastmoney.com/center/boardlist.html#concept_board" target="_blank" class="sb-r"><span class="sr">4</span><div class="sbw"><div class="sbb" style="width:23.580000000000002%;background:#ff4040"></div></div><span class="sn">创新药</span><span class="sc" style="color:#ff4040">+5.24%</span></a><a href="https://quote.eastmoney.com/center/boardlist.html#concept_board" target="_blank" class="sb-r"><span class="sr">5</span><div class="sbw"><div class="sbb" style="width:22.68%;background:#ff4040"></div></div><span class="sn">CPO概念</span><span class="sc" style="color:#ff4040">+5.04%</span></a></div>
+      <div class="sb2"><a href="https://quote.eastmoney.com/center/boardlist.html#concept_board" target="_blank" class="sb-r"><span class="sr">1</span><div class="sbw"><div class="sbb" style="width:29.96%;background:#ff4040"></div></div><span class="sn">医疗研发外包</span><span class="sc" style="color:#ff4040">+7.49%</span></a><a href="https://quote.eastmoney.com/center/boardlist.html#concept_board" target="_blank" class="sb-r"><span class="sr">2</span><div class="sbw"><div class="sbb" style="width:29.44%;background:#ff4040"></div></div><span class="sn">洗护用品</span><span class="sc" style="color:#ff4040">+7.36%</span></a><a href="https://quote.eastmoney.com/center/boardlist.html#concept_board" target="_blank" class="sb-r"><span class="sr">3</span><div class="sbw"><div class="sbb" style="width:25.0%;background:#ff4040"></div></div><span class="sn">医美耗材</span><span class="sc" style="color:#ff4040">+6.25%</span></a><a href="https://quote.eastmoney.com/center/boardlist.html#concept_board" target="_blank" class="sb-r"><span class="sr">4</span><div class="sbw"><div class="sbb" style="width:22.6%;background:#ff4040"></div></div><span class="sn">其他生物制品</span><span class="sc" style="color:#ff4040">+5.65%</span></a><a href="https://quote.eastmoney.com/center/boardlist.html#concept_board" target="_blank" class="sb-r"><span class="sr">5</span><div class="sbw"><div class="sbb" style="width:22.6%;background:#ff4040"></div></div><span class="sn">食用菌</span><span class="sc" style="color:#ff4040">+5.65%</span></a></div>
     </div>
     <div class="cl">
       <div class="shd">🔥 [板块热度矩阵]</div>
-      <div class="hm2"><a href="https://quote.eastmoney.com/center/boardlist.html#concept_board" target="_blank" class="hmb" style="background:#cc2000" title="重组蛋白"><span class="hmn">重组蛋白</span><span class="hmc">+7.12%</span></a><a href="https://quote.eastmoney.com/center/boardlist.html#concept_board" target="_blank" class="hmb" style="background:#cc2000" title="CRO"><span class="hmn">CRO</span><span class="hmc">+6.25%</span></a><a href="https://quote.eastmoney.com/center/boardlist.html#concept_board" target="_blank" class="hmb" style="background:#cc2000" title="CAR-T细胞疗法"><span class="hmn">CAR-T细胞疗法</span><span class="hmc">+5.52%</span></a><a href="https://quote.eastmoney.com/center/boardlist.html#concept_board" target="_blank" class="hmb" style="background:#cc2000" title="创新药"><span class="hmn">创新药</span><span class="hmc">+5.24%</span></a><a href="https://quote.eastmoney.com/center/boardlist.html#concept_board" target="_blank" class="hmb" style="background:#cc2000" title="CPO概念"><span class="hmn">CPO概念</span><span class="hmc">+5.04%</span></a><a href="https://quote.eastmoney.com/center/boardlist.html#concept_board" target="_blank" class="hmb" style="background:#dd4000" title="阿兹海默"><span class="hmn">阿兹海默</span><span class="hmc">+4.42%</span></a><a href="https://quote.eastmoney.com/center/boardlist.html#concept_board" target="_blank" class="hmb" style="background:#dd4000" title="减肥药"><span class="hmn">减肥药</span><span class="hmc">+4.36%</span></a><a href="https://quote.eastmoney.com/center/boardlist.html#concept_board" target="_blank" class="hmb" style="background:#dd4000" title="免疫治疗"><span class="hmn">免疫治疗</span><span class="hmc">+4.35%</span></a><a href="https://quote.eastmoney.com/center/boardlist.html#concept_board" target="_blank" class="hmb" style="background:#dd4000" title="单抗概念"><span class="hmn">单抗概念</span><span class="hmc">+4.23%</span></a><a href="https://quote.eastmoney.com/center/boardlist.html#concept_board" target="_blank" class="hmb" style="background:#dd4000" title="肝炎概念"><span class="hmn">肝炎概念</span><span class="hmc">+4.22%</span></a><a href="https://quote.eastmoney.com/center/boardlist.html#concept_board" target="_blank" class="hmb" style="background:#dd4000" title="昨日打二板以上表现"><span class="hmn">昨日打二板以上表现</span><span class="hmc">+4.19%</span></a><a href="https://quote.eastmoney.com/center/boardlist.html#concept_board" target="_blank" class="hmb" style="background:#dd4000" title="痘病毒防治"><span class="hmn">痘病毒防治</span><span class="hmc">+4.04%</span></a></div>
+      <div class="hm2"><a href="https://quote.eastmoney.com/center/boardlist.html#concept_board" target="_blank" class="hmb" style="background:#cc2000" title="医疗研发外包"><span class="hmn">医疗研发外包</span><span class="hmc">+7.5%</span></a><a href="https://quote.eastmoney.com/center/boardlist.html#concept_board" target="_blank" class="hmb" style="background:#cc2000" title="洗护用品"><span class="hmn">洗护用品</span><span class="hmc">+7.4%</span></a><a href="https://quote.eastmoney.com/center/boardlist.html#concept_board" target="_blank" class="hmb" style="background:#cc2000" title="医美耗材"><span class="hmn">医美耗材</span><span class="hmc">+6.2%</span></a><a href="https://quote.eastmoney.com/center/boardlist.html#concept_board" target="_blank" class="hmb" style="background:#cc2000" title="其他生物制品"><span class="hmn">其他生物制品</span><span class="hmc">+5.7%</span></a><a href="https://quote.eastmoney.com/center/boardlist.html#concept_board" target="_blank" class="hmb" style="background:#cc2000" title="食用菌"><span class="hmn">食用菌</span><span class="hmc">+5.7%</span></a><a href="https://quote.eastmoney.com/center/boardlist.html#concept_board" target="_blank" class="hmb" style="background:#cc2000" title="综合电力设备商"><span class="hmn">综合电力设备商</span><span class="hmc">+5.5%</span></a><a href="https://quote.eastmoney.com/center/boardlist.html#concept_board" target="_blank" class="hmb" style="background:#cc2000" title="化学制剂"><span class="hmn">化学制剂</span><span class="hmc">+5.2%</span></a><a href="https://quote.eastmoney.com/center/boardlist.html#concept_board" target="_blank" class="hmb" style="background:#cc2000" title="玻纤制造"><span class="hmn">玻纤制造</span><span class="hmc">+5.0%</span></a><a href="https://quote.eastmoney.com/center/boardlist.html#concept_board" target="_blank" class="hmb" style="background:#cc2000" title="医疗服务"><span class="hmn">医疗服务</span><span class="hmc">+5.0%</span></a><a href="https://quote.eastmoney.com/center/boardlist.html#concept_board" target="_blank" class="hmb" style="background:#dd4000" title="集成电路制造"><span class="hmn">集成电路制造</span><span class="hmc">+4.9%</span></a><a href="https://quote.eastmoney.com/center/boardlist.html#concept_board" target="_blank" class="hmb" style="background:#dd4000" title="生物制品"><span class="hmn">生物制品</span><span class="hmc">+4.8%</span></a><a href="https://quote.eastmoney.com/center/boardlist.html#concept_board" target="_blank" class="hmb" style="background:#dd4000" title="化学制药"><span class="hmn">化学制药</span><span class="hmc">+4.7%</span></a></div>
     </div>
   </div>
 
-  <!-- L4 消息面 -->
+  <!-- L4 -->
   <div class="nrow">
     <div class="nhdr">
       <div class="nlive"><div class="dot2"></div><span class="nl">LIVE</span></div>
-      <div class="shd" style="flex:1">📰 [消息面 · 实时财经] 财联社</div>
+      <div class="shd" style="flex:1">📰 [消息面 · 实时财经 财联社]</div>
+      <span class="nsrc">点击查看原文 →</span>
     </div>
     <div class="nscroll-outer">
-      <div class="ntrack2">
-        <a href="https://www.cls.cn/depth?id=1003" target="_blank" class="nc">
-<span class="nt">19:55</span>
-<span class="nn">交易员称美股本轮劲扬主要由空头回补所致</span>
-<span class="ng"><span style="background:#7f8c8d22;color:#7f8c8d;border:1px solid #7f8c8d44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap">宏观</span></span>
-</a><a href="https://www.cls.cn/depth?id=1003" target="_blank" class="nc">
-<span class="nt">19:51</span>
-<span class="nn">美股黄金股盘前续涨</span>
-<span class="ng"><span style="background:#ffd70022;color:#ffd700;border:1px solid #ffd70044;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap">贵金属</span></span>
-</a><a href="https://www.cls.cn/depth?id=1003" target="_blank" class="nc">
-<span class="nt">19:49</span>
-<span class="nn">小鹏副总裁魏斌已于近期离职</span>
-<span class="ng"><span style="background:#e74c3c22;color:#e74c3c;border:1px solid #e74c3c44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap">汽车</span></span>
-</a><a href="https://www.cls.cn/depth?id=1003" target="_blank" class="nc">
-<span class="nt">19:48</span>
-<span class="nn">胜蓝股份：控股股东及董事拟合计减持不超3.19%</span>
-<span class="ng"><span style="background:#7f8c8d22;color:#7f8c8d;border:1px solid #7f8c8d44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap">宏观</span></span>
-</a><a href="https://www.cls.cn/depth?id=1003" target="_blank" class="nc">
-<span class="nt">19:45</span>
-<span class="nn">现货黄金日内涨幅扩大至2%，报4760美元/盎司</span>
-<span class="ng"><span style="background:#ffd70022;color:#ffd700;border:1px solid #ffd70044;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap">贵金属</span></span>
-</a><a href="https://www.cls.cn/depth?id=1003" target="_blank" class="nc">
-<span class="nt">19:44</span>
-<span class="nn">美军意图扩大在格陵兰岛军事存在</span>
-<span class="ng"><span style="background:#c0392b22;color:#c0392b;border:1px solid #c0392b44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap">地缘</span></span>
-</a><a href="https://www.cls.cn/depth?id=1003" target="_blank" class="nc">
-<span class="nt">19:44</span>
-<span class="nn">伊朗称打击美预警机加油机部署地</span>
-<span class="ng"><span style="background:#c0392b22;color:#c0392b;border:1px solid #c0392b44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap">地缘</span></span>
-</a><a href="https://www.cls.cn/depth?id=1003" target="_blank" class="nc">
-<span class="nt">19:42</span>
-<span class="nn">光伏大规模退役潮来了 企业扎堆入局光伏回收赛道</span>
-<span class="ng"><span style="background:#f39c1222;color:#f39c12;border:1px solid #f39c1244;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap">光伏</span></span>
-</a><a href="https://www.cls.cn/depth?id=1003" target="_blank" class="nc">
-<span class="nt">19:40</span>
-<span class="nn">航发动力：2025年净利润同比减少26.27%</span>
-<span class="ng"><span style="background:#c0392b22;color:#c0392b;border:1px solid #c0392b44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap">军工</span></span>
-</a><a href="https://www.cls.cn/depth?id=1003" target="_blank" class="nc">
-<span class="nt">19:37</span>
-<span class="nn">李强在四川调研 着力推进新型电网建设</span>
-<span class="ng"><span style="background:#2980b922;color:#2980b9;border:1px solid #2980b944;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap">电力</span><span style="background:#f39c1222;color:#f39c12;border:1px solid #f39c1244;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap">光伏</span></span>
-</a><a href="https://www.cls.cn/depth?id=1003" target="_blank" class="nc">
-<span class="nt">19:35</span>
-<span class="nn">字节跳动AI编程产品TRAE SOLO推出独立客户端</span>
-<span class="ng"><span style="background:#7b5cf022;color:#7b5cf0;border:1px solid #7b5cf044;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap">AI应用</span></span>
-</a><a href="https://www.cls.cn/depth?id=1003" target="_blank" class="nc">
-<span class="nt">19:33</span>
-<span class="nn">中科院宣布下一代开源芯片研制计划</span>
-<span class="ng"><span style="background:#ff6b3522;color:#ff6b35;border:1px solid #ff6b3544;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap">半导体</span></span>
-</a><a href="https://www.cls.cn/depth?id=1003" target="_blank" class="nc">
-<span class="nt">19:30</span>
-<span class="nn">世界数据组织在北京正式启动运营</span>
-<span class="ng"><span style="background:#4a608022;color:#4a6080;border:1px solid #4a608044;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap">数据要素</span></span>
-</a><a href="https://www.cls.cn/depth?id=1003" target="_blank" class="nc">
-<span class="nt">19:28</span>
-<span class="nn">小鹏汽车新款P7+订单突破2万台</span>
-<span class="ng"><span style="background:#e74c3c22;color:#e74c3c;border:1px solid #e74c3c44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap">汽车</span></span>
-</a><a href="https://www.cls.cn/depth?id=1003" target="_blank" class="nc">
-<span class="nt">19:25</span>
-<span class="nn">国家能源局：加快新型储能项目落地</span>
-<span class="ng"><span style="background:#27ae6022;color:#27ae60;border:1px solid #27ae6044;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap">储能</span></span>
-</a>
-        <a href="https://www.cls.cn/depth?id=1003" target="_blank" class="nc">
-<span class="nt">19:55</span>
-<span class="nn">交易员称美股本轮劲扬主要由空头回补所致</span>
-<span class="ng"><span style="background:#7f8c8d22;color:#7f8c8d;border:1px solid #7f8c8d44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap">宏观</span></span>
-</a><a href="https://www.cls.cn/depth?id=1003" target="_blank" class="nc">
-<span class="nt">19:51</span>
-<span class="nn">美股黄金股盘前续涨</span>
-<span class="ng"><span style="background:#ffd70022;color:#ffd700;border:1px solid #ffd70044;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap">贵金属</span></span>
-</a><a href="https://www.cls.cn/depth?id=1003" target="_blank" class="nc">
-<span class="nt">19:49</span>
-<span class="nn">小鹏副总裁魏斌已于近期离职</span>
-<span class="ng"><span style="background:#e74c3c22;color:#e74c3c;border:1px solid #e74c3c44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap">汽车</span></span>
-</a><a href="https://www.cls.cn/depth?id=1003" target="_blank" class="nc">
-<span class="nt">19:48</span>
-<span class="nn">胜蓝股份：控股股东及董事拟合计减持不超3.19%</span>
-<span class="ng"><span style="background:#7f8c8d22;color:#7f8c8d;border:1px solid #7f8c8d44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap">宏观</span></span>
-</a><a href="https://www.cls.cn/depth?id=1003" target="_blank" class="nc">
-<span class="nt">19:45</span>
-<span class="nn">现货黄金日内涨幅扩大至2%，报4760美元/盎司</span>
-<span class="ng"><span style="background:#ffd70022;color:#ffd700;border:1px solid #ffd70044;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap">贵金属</span></span>
-</a><a href="https://www.cls.cn/depth?id=1003" target="_blank" class="nc">
-<span class="nt">19:44</span>
-<span class="nn">美军意图扩大在格陵兰岛军事存在</span>
-<span class="ng"><span style="background:#c0392b22;color:#c0392b;border:1px solid #c0392b44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap">地缘</span></span>
-</a><a href="https://www.cls.cn/depth?id=1003" target="_blank" class="nc">
-<span class="nt">19:44</span>
-<span class="nn">伊朗称打击美预警机加油机部署地</span>
-<span class="ng"><span style="background:#c0392b22;color:#c0392b;border:1px solid #c0392b44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap">地缘</span></span>
-</a><a href="https://www.cls.cn/depth?id=1003" target="_blank" class="nc">
-<span class="nt">19:42</span>
-<span class="nn">光伏大规模退役潮来了 企业扎堆入局光伏回收赛道</span>
-<span class="ng"><span style="background:#f39c1222;color:#f39c12;border:1px solid #f39c1244;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap">光伏</span></span>
-</a><a href="https://www.cls.cn/depth?id=1003" target="_blank" class="nc">
-<span class="nt">19:40</span>
-<span class="nn">航发动力：2025年净利润同比减少26.27%</span>
-<span class="ng"><span style="background:#c0392b22;color:#c0392b;border:1px solid #c0392b44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap">军工</span></span>
-</a><a href="https://www.cls.cn/depth?id=1003" target="_blank" class="nc">
-<span class="nt">19:37</span>
-<span class="nn">李强在四川调研 着力推进新型电网建设</span>
-<span class="ng"><span style="background:#2980b922;color:#2980b9;border:1px solid #2980b944;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap">电力</span><span style="background:#f39c1222;color:#f39c12;border:1px solid #f39c1244;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap">光伏</span></span>
-</a><a href="https://www.cls.cn/depth?id=1003" target="_blank" class="nc">
-<span class="nt">19:35</span>
-<span class="nn">字节跳动AI编程产品TRAE SOLO推出独立客户端</span>
-<span class="ng"><span style="background:#7b5cf022;color:#7b5cf0;border:1px solid #7b5cf044;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap">AI应用</span></span>
-</a><a href="https://www.cls.cn/depth?id=1003" target="_blank" class="nc">
-<span class="nt">19:33</span>
-<span class="nn">中科院宣布下一代开源芯片研制计划</span>
-<span class="ng"><span style="background:#ff6b3522;color:#ff6b35;border:1px solid #ff6b3544;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap">半导体</span></span>
-</a><a href="https://www.cls.cn/depth?id=1003" target="_blank" class="nc">
-<span class="nt">19:30</span>
-<span class="nn">世界数据组织在北京正式启动运营</span>
-<span class="ng"><span style="background:#4a608022;color:#4a6080;border:1px solid #4a608044;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap">数据要素</span></span>
-</a><a href="https://www.cls.cn/depth?id=1003" target="_blank" class="nc">
-<span class="nt">19:28</span>
-<span class="nn">小鹏汽车新款P7+订单突破2万台</span>
-<span class="ng"><span style="background:#e74c3c22;color:#e74c3c;border:1px solid #e74c3c44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap">汽车</span></span>
-</a><a href="https://www.cls.cn/depth?id=1003" target="_blank" class="nc">
-<span class="nt">19:25</span>
-<span class="nn">国家能源局：加快新型储能项目落地</span>
-<span class="ng"><span style="background:#27ae6022;color:#27ae60;border:1px solid #27ae6044;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap">储能</span></span>
-</a>
-      </div>
+      <div class="ntrack2" id="newsTrack"><a href="https://www.cls.cn/detail/2332424" target="_blank" class="nc2"><span class="nt2">20:01</span><span class="nn2">财联社4月1日电，波罗的海干散货指数涨1.75%，至2030点。</span><span class="ng2"><span style="background:#7f8c8d22;color:#7f8c8d;border:1px solid #7f8c8d44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap;display:inline-block">宏观</span></span></a><a href="https://www.cls.cn/detail/2332422" target="_blank" class="nc2"><span class="nt2">20:00</span><span class="nn2">财联社4月1日电，美国国家橄榄球联盟（NFL）批准以超过110亿美元的估值，将拉</span><span class="ng2"><span style="background:#7f8c8d22;color:#7f8c8d;border:1px solid #7f8c8d44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap;display:inline-block">宏观</span></span></a><a href="https://www.cls.cn/detail/2332421" target="_blank" class="nc2"><span class="nt2">19:58</span><span class="nn2">美联储巴尔金：预期通胀进展缓慢 不会迅速回到目标</span><span class="ng2"><span style="background:#e91e6322;color:#e91e63;border:1px solid #e91e6344;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap;display:inline-block">消费</span></span></a><a href="https://www.cls.cn/detail/2332416" target="_blank" class="nc2"><span class="nt2">19:58</span><span class="nn2">4月1日周三《新闻联播》要闻19条</span><span class="ng2"><span style="background:#c0392b22;color:#c0392b;border:1px solid #c0392b44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap;display:inline-block">军工</span><span style="background:#27ae6022;color:#27ae60;border:1px solid #27ae6044;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap;display:inline-block">新能源</span></span></a><a href="https://www.cls.cn/detail/2332417" target="_blank" class="nc2"><span class="nt2">19:55</span><span class="nn2">交易员称美股本轮劲扬主要由空头回补所致 并非伊朗和平前景</span><span class="ng2"><span style="background:#7f8c8d22;color:#7f8c8d;border:1px solid #7f8c8d44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap;display:inline-block">宏观</span></span></a><a href="https://www.cls.cn/detail/2332413" target="_blank" class="nc2"><span class="nt2">19:51</span><span class="nn2">美股黄金股盘前续涨</span><span class="ng2"><span style="background:#ffd70022;color:#ffd700;border:1px solid #ffd70044;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap;display:inline-block">贵金属</span></span></a><a href="https://www.cls.cn/detail/2332403" target="_blank" class="nc2"><span class="nt2">19:49</span><span class="nn2">小鹏副总裁魏斌已于近期离职</span><span class="ng2"><span style="background:#7f8c8d22;color:#7f8c8d;border:1px solid #7f8c8d44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap;display:inline-block">宏观</span></span></a><a href="https://www.cls.cn/detail/2332402" target="_blank" class="nc2"><span class="nt2">19:48</span><span class="nn2">胜蓝股份：控股股东及部分董事拟合计减持不超3.19%公司股份</span><span class="ng2"><span style="background:#7f8c8d22;color:#7f8c8d;border:1px solid #7f8c8d44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap;display:inline-block">宏观</span></span></a><a href="https://www.cls.cn/detail/2332400" target="_blank" class="nc2"><span class="nt2">19:46</span><span class="nn2">财联社4月1日电，中国地震台网正式测定：04月01日19时20分在秘鲁（南纬7.</span><span class="ng2"><span style="background:#7f8c8d22;color:#7f8c8d;border:1px solid #7f8c8d44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap;display:inline-block">宏观</span></span></a><a href="https://www.cls.cn/detail/2332398" target="_blank" class="nc2"><span class="nt2">19:45</span><span class="nn2">奥来德：控股股东、实际控制人及一致行动人、部分高管拟合计减持不超过3%</span><span class="ng2"><span style="background:#7f8c8d22;color:#7f8c8d;border:1px solid #7f8c8d44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap;display:inline-block">宏观</span></span></a><a href="https://www.cls.cn/detail/2332395" target="_blank" class="nc2"><span class="nt2">19:45</span><span class="nn2">财联社4月1日电，现货黄金日内涨幅扩大至2%，报4760.32美元/盎司。</span><span class="ng2"><span style="background:#ffd70022;color:#ffd700;border:1px solid #ffd70044;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap;display:inline-block">贵金属</span></span></a><a href="https://www.cls.cn/detail/2332394" target="_blank" class="nc2"><span class="nt2">19:44</span><span class="nn2">美官员称美军意图扩大在格陵兰岛军事存在</span><span class="ng2"><span style="background:#7f8c8d22;color:#7f8c8d;border:1px solid #7f8c8d44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap;display:inline-block">宏观</span></span></a><a href="https://www.cls.cn/detail/2332392" target="_blank" class="nc2"><span class="nt2">19:44</span><span class="nn2">伊朗称打击美预警机加油机部署地</span><span class="ng2"><span style="background:#c0392b22;color:#c0392b;border:1px solid #c0392b44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap;display:inline-block">军工</span></span></a><a href="https://www.cls.cn/detail/2332391" target="_blank" class="nc2"><span class="nt2">19:43</span><span class="nn2">财联社4月1日电，上交所就喜临门控股股东及其关联方非经营性资金占用相关事项下发监</span><span class="ng2"><span style="background:#7f8c8d22;color:#7f8c8d;border:1px solid #7f8c8d44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap;display:inline-block">宏观</span></span></a><a href="https://www.cls.cn/detail/2332388" target="_blank" class="nc2"><span class="nt2">19:42</span><span class="nn2">光伏大规模退役潮来了 企业扎堆入局光伏回收赛道</span><span class="ng2"><span style="background:#f39c1222;color:#f39c12;border:1px solid #f39c1244;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap;display:inline-block">光伏</span></span></a><a href="https://www.cls.cn/detail/2332387" target="_blank" class="nc2"><span class="nt2">19:41</span><span class="nn2">美军弹药现缺口 美军欲调用反导系统被波兰拒绝</span><span class="ng2"><span style="background:#7f8c8d22;color:#7f8c8d;border:1px solid #7f8c8d44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap;display:inline-block">宏观</span></span></a><a href="https://www.cls.cn/detail/2332386" target="_blank" class="nc2"><span class="nt2">19:40</span><span class="nn2">航发动力：2025年净利润同比减少26.27% 拟10派0.72元</span><span class="ng2"><span style="background:#7f8c8d22;color:#7f8c8d;border:1px solid #7f8c8d44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap;display:inline-block">宏观</span></span></a><a href="https://www.cls.cn/detail/2332383" target="_blank" class="nc2"><span class="nt2">19:38</span><span class="nn2">湖北能源：副董事长、总经理涂山峰因到退休年龄辞职</span><span class="ng2"><span style="background:#7f8c8d22;color:#7f8c8d;border:1px solid #7f8c8d44;padding:1px 5px;border-radius:3px;font-size:8px;white-space:nowrap;display:inline-block">宏观</span></span></a></div>
     </div>
   </div>
 
-  <!-- L5 ETF轮动 -->
+  <!-- L5 -->
   <div class="erow">
-    <div class="shd">🔄 [ETF轮动五阶段]</div>
-    <div class="er5"><div class="erc2" style="background:rgba(0,140,220,0.12)"><div class="erhd" style="border-top:2px solid #00a4ff;color:#00a4ff"><span style="font-size:10px">🔵</span><b>[加仓]</b></div><div class="erbd"><a href="https://fund.eastmoney.com/512800.html" target="_blank" class="eri"><span class="erc">512800</span><span class="ern">银行ETF华宝</span><span class="erch" style="color:#3a5060">+0.0%</span><div class="mb"><div style="width:40%;background:#ff8000"></div><div style="width:85%;background:#00a4ff"></div><div style="width:35%;background:#ffaa00"></div></div></a></div></div><div class="erc2" style="background:rgba(180,110,0,0.12)"><div class="erhd" style="border-top:2px solid #c87800;color:#c87800"><span style="font-size:10px">🟡</span><b>[持有]</b></div><div class="erbd"></div></div><div class="erc2" style="background:rgba(220,30,30,0.15)"><div class="erhd" style="border-top:2px solid #ff3535;color:#ff3535"><span style="font-size:10px">🔴</span><b>[持有]</b></div><div class="erbd"><a href="https://fund.eastmoney.com/512010.html" target="_blank" class="eri"><span class="erc">512010</span><span class="ern">医药ETF易方达</span><span class="erch" style="color:#ff4040">+3.57%</span><div class="mb"><div style="width:65%;background:#ff8000"></div><div style="width:100%;background:#00a4ff"></div><div style="width:100%;background:#ffaa00"></div></div></a></div></div><div class="erc2" style="background:rgba(220,90,0,0.12)"><div class="erhd" style="border-top:2px solid #ff8000;color:#ff8000"><span style="font-size:10px">🟣</span><b>[减仓]</b></div><div class="erbd"><a href="https://fund.eastmoney.com/518880.html" target="_blank" class="eri"><span class="erc">518880</span><span class="ern">黄金ETF华安</span><span class="erch" style="color:#ff4040">+3.35%</span><div class="mb"><div style="width:40%;background:#ff8000"></div><div style="width:100%;background:#00a4ff"></div><div style="width:35%;background:#ffaa00"></div></div></a></div></div><div class="erc2" style="background:rgba(50,70,90,0.12)"><div class="erhd" style="border-top:2px solid #3a5566;color:#3a5566"><span style="font-size:10px">⚫</span><b>[观望]</b></div><div class="erbd"><a href="https://fund.eastmoney.com/512660.html" target="_blank" class="eri"><span class="erc">512660</span><span class="ern">军工ETF国泰</span><span class="erch" style="color:#ff4040">+0.38%</span><div class="mb"><div style="width:65%;background:#ff8000"></div><div style="width:30%;background:#00a4ff"></div><div style="width:35%;background:#ffaa00"></div></div></a><a href="https://fund.eastmoney.com/515790.html" target="_blank" class="eri"><span class="erc">515790</span><span class="ern">光伏ETF华泰柏瑞</span><span class="erch" style="color:#ff4040">+0.68%</span><div class="mb"><div style="width:65%;background:#ff8000"></div><div style="width:0%;background:#00a4ff"></div><div style="width:35%;background:#ffaa00"></div></div></a><a href="https://fund.eastmoney.com/512760.html" target="_blank" class="eri"><span class="erc">512760</span><span class="ern">芯片ETF国泰</span><span class="erch" style="color:#ff4040">+3.13%</span><div class="mb"><div style="width:65%;background:#ff8000"></div><div style="width:30%;background:#00a4ff"></div><div style="width:78%;background:#ffaa00"></div></div></a><a href="https://fund.eastmoney.com/515050.html" target="_blank" class="eri"><span class="erc">515050</span><span class="ern">通信ETF华夏</span><span class="erch" style="color:#ff4040">+3.42%</span><div class="mb"><div style="width:65%;background:#ff8000"></div><div style="width:30%;background:#00a4ff"></div><div style="width:78%;background:#ffaa00"></div></div></a><a href="https://fund.eastmoney.com/512880.html" target="_blank" class="eri"><span class="erc">512880</span><span class="ern">证券ETF国泰</span><span class="erch" style="color:#ff4040">+1.55%</span><div class="mb"><div style="width:47%;background:#ff8000"></div><div style="width:30%;background:#00a4ff"></div><div style="width:35%;background:#ffaa00"></div></div></a><a href="https://fund.eastmoney.com/159611.html" target="_blank" class="eri"><span class="erc">159611</span><span class="ern">电力ETF</span><span class="erch" style="color:#3a5060">+0%</span><div class="mb"><div style="width:40%;background:#ff8000"></div><div style="width:50%;background:#00a4ff"></div><div style="width:35%;background:#ffaa00"></div></div></a><a href="https://fund.eastmoney.com/512690.html" target="_blank" class="eri"><span class="erc">512690</span><span class="ern">酒ETF鹏华</span><span class="erch" style="color:#ff4040">+1.01%</span><div class="mb"><div style="width:40%;background:#ff8000"></div><div style="width:38%;background:#00a4ff"></div><div style="width:35%;background:#ffaa00"></div></div></a></div></div></div>
+    <div class="shd">🔄 [ETF轮动五阶段] <span id="refreshing" style="display:none;color:#ff8000;font-size:9px;margin-left:6px">⟳ 刷新中</span></div>
+    <div class="er5"><div class="erc2" style="background:rgba(0,140,220,0.12)"><div class="erhd" style="border-top:2px solid #00a4ff;color:#00a4ff"><span style="font-size:10px">🔵</span><b>[加仓]</b></div><div class="erbd"><a href="https://quote.eastmoney.com/sz513310.html" target="_blank" class="eri"><span class="erc">513310</span><span class="ern">中韩半导体ETF</span><span class="erch" style="color:#ff4040">+2.80%</span><div class="mb"><div style="width:72%;background:#ff8000"></div><div style="width:88%;background:#00a4ff"></div><div style="width:75%;background:#ffaa00"></div></div></a><a href="https://quote.eastmoney.com/sh518880.html" target="_blank" class="eri"><span class="erc">518880</span><span class="ern">黄金ETF华安</span><span class="erch" style="color:#ff4040">+0.80%</span><div class="mb"><div style="width:70%;background:#ff8000"></div><div style="width:85%;background:#00a4ff"></div><div style="width:80%;background:#ffaa00"></div></div></a><a href="https://quote.eastmoney.com/sz159825.html" target="_blank" class="eri"><span class="erc">159825</span><span class="ern">农业ETF富国</span><span class="erch" style="color:#ff4040">+1.50%</span><div class="mb"><div style="width:78%;background:#ff8000"></div><div style="width:68%;background:#00a4ff"></div><div style="width:60%;background:#ffaa00"></div></div></a></div></div><div class="erc2" style="background:rgba(180,110,0,0.12)"><div class="erhd" style="border-top:2px solid #c87800;color:#c87800"><span style="font-size:10px">🟡</span><b>[持有]</b></div><div class="erbd"><a href="https://quote.eastmoney.com/sz159502.html" target="_blank" class="eri"><span class="erc">159502</span><span class="ern">标普生物科技ETF</span><span class="erch" style="color:#ff4040">+3.10%</span><div class="mb"><div style="width:65%;background:#ff8000"></div><div style="width:75%;background:#00a4ff"></div><div style="width:68%;background:#ffaa00"></div></div></a></div></div><div class="erc2" style="background:rgba(220,30,30,0.15)"><div class="erhd" style="border-top:2px solid #ff3535;color:#ff3535"><span style="font-size:10px">🔴</span><b>[持有]</b></div><div class="erbd"><a href="https://quote.eastmoney.com/sz512680.html" target="_blank" class="eri"><span class="erc">512680</span><span class="ern">航空航天ETF华夏</span><span class="erch" style="color:#ff4040">+1.90%</span><div class="mb"><div style="width:85%;background:#ff8000"></div><div style="width:70%;background:#00a4ff"></div><div style="width:72%;background:#ffaa00"></div></div></a><a href="https://quote.eastmoney.com/sz512660.html" target="_blank" class="eri"><span class="erc">512660</span><span class="ern">军工ETF国泰</span><span class="erch" style="color:#ff4040">+2.10%</span><div class="mb"><div style="width:90%;background:#ff8000"></div><div style="width:72%;background:#00a4ff"></div><div style="width:70%;background:#ffaa00"></div></div></a></div></div><div class="erc2" style="background:rgba(220,90,0,0.12)"><div class="erhd" style="border-top:2px solid #ff8000;color:#ff8000"><span style="font-size:10px">🟣</span><b>[减仓]</b></div><div class="erbd"><a href="https://quote.eastmoney.com/sz515880.html" target="_blank" class="eri"><span class="erc">515880</span><span class="ern">通信ETF华夏</span><span class="erch" style="color:#ff4040">+1.20%</span><div class="mb"><div style="width:60%;background:#ff8000"></div><div style="width:62%;background:#00a4ff"></div><div style="width:55%;background:#ffaa00"></div></div></a></div></div><div class="erc2" style="background:rgba(50,70,90,0.12)"><div class="erhd" style="border-top:2px solid #3a5566;color:#3a5566"><span style="font-size:10px">⚫</span><b>[观望]</b></div><div class="erbd"><span style='font-size:9px;color:#3a5060;padding:4px'>暂无ETF</span></div></div></div>
   </div>
 
-  <!-- L6 五维 -->
+  <!-- L6 -->
   <div class="dim-row">
-    <div class="shd">📊 [五维监控诊断]</div>
+    <div class="shd">📊 [五维监控诊断] <span style="font-weight:400;color:#3a5060;font-size:8px">政/基/技/资/情</span></div>
     <div class="dimt">
       <table class="dtbl">
-        <thead>
-          <tr>
-            <th>信号</th><th>ETF</th><th>周期</th><th>涨跌</th><th>轮动</th><th>评分</th><th>政/基/技/资/情</th>
-          </tr>
-        </thead>
-        <tbody><tr><td><a href="https://fund.eastmoney.com/512010.html" target="_blank" class="sg" style="background:#00c07f">强力买入</a></td><td><a href="https://fund.eastmoney.com/512010.html" target="_blank" class="en">医药ETF易方达<br><span style="color:#3a5060;font-size:8px">512010</span></a></td><td style="text-align:center;font-size:9px;color:#5a7080">高潮</td><td style="text-align:center;font-weight:700;color:#ff4040;font-size:11px">+3.57%</td><td style="text-align:center"><span style="font-size:13px;color:#ff3535">🔴</span></td><td style="text-align:center;font-weight:700;color:#00c07f;font-size:11px">x8.9</td><td><div class="db"><div style="width:65%;background:#ff8000"></div><div style="width:68%;background:#00c060"></div><div style="width:100%;background:#00a4ff"></div><div style="width:100%;background:#ffaa00"></div><div style="width:87%;background:#ff4040"></div></div></td></tr><tr><td><a href="https://fund.eastmoney.com/518880.html" target="_blank" class="sg" style="background:#ffaa00">持有</a></td><td><a href="https://fund.eastmoney.com/518880.html" target="_blank" class="en">黄金ETF华安<br><span style="color:#3a5060;font-size:8px">518880</span></a></td><td style="text-align:center;font-size:9px;color:#5a7080">分歧</td><td style="text-align:center;font-weight:700;color:#ff4040;font-size:11px">+3.35%</td><td style="text-align:center"><span style="font-size:13px;color:#ff8000">🟣</span></td><td style="text-align:center;font-weight:700;color:#ffaa00;font-size:11px">x6.4</td><td><div class="db"><div style="width:40%;background:#ff8000"></div><div style="width:50%;background:#00c060"></div><div style="width:100%;background:#00a4ff"></div><div style="width:35%;background:#ffaa00"></div><div style="width:72%;background:#ff4040"></div></div></td></tr><tr><td><a href="https://fund.eastmoney.com/515050.html" target="_blank" class="sg" style="background:#ffaa00">持有</a></td><td><a href="https://fund.eastmoney.com/515050.html" target="_blank" class="en">通信ETF华夏<br><span style="color:#3a5060;font-size:8px">515050</span></a></td><td style="text-align:center;font-size:9px;color:#5a7080">退潮</td><td style="text-align:center;font-weight:700;color:#ff4040;font-size:11px">+3.42%</td><td style="text-align:center"><span style="font-size:13px;color:#3a5566">⚫</span></td><td style="text-align:center;font-weight:700;color:#ffaa00;font-size:11px">x5.9</td><td><div class="db"><div style="width:65%;background:#ff8000"></div><div style="width:50%;background:#00c060"></div><div style="width:30%;background:#00a4ff"></div><div style="width:78%;background:#ffaa00"></div><div style="width:80%;background:#ff4040"></div></div></td></tr><tr><td><a href="https://fund.eastmoney.com/512800.html" target="_blank" class="sg" style="background:#ffaa00">持有</a></td><td><a href="https://fund.eastmoney.com/512800.html" target="_blank" class="en">银行ETF华宝<br><span style="color:#3a5060;font-size:8px">512800</span></a></td><td style="text-align:center;font-size:9px;color:#5a7080">启动</td><td style="text-align:center;font-weight:700;color:#3a5060;font-size:11px">+0.0%</td><td style="text-align:center"><span style="font-size:13px;color:#00a4ff">🔵</span></td><td style="text-align:center;font-weight:700;color:#ffaa00;font-size:11px">x5.9</td><td><div class="db"><div style="width:40%;background:#ff8000"></div><div style="width:68%;background:#00c060"></div><div style="width:85%;background:#00a4ff"></div><div style="width:35%;background:#ffaa00"></div><div style="width:58%;background:#ff4040"></div></div></td></tr><tr><td><a href="https://fund.eastmoney.com/512760.html" target="_blank" class="sg" style="background:#ffaa00">持有</a></td><td><a href="https://fund.eastmoney.com/512760.html" target="_blank" class="en">芯片ETF国泰<br><span style="color:#3a5060;font-size:8px">512760</span></a></td><td style="text-align:center;font-size:9px;color:#5a7080">退潮</td><td style="text-align:center;font-weight:700;color:#ff4040;font-size:11px">+3.13%</td><td style="text-align:center"><span style="font-size:13px;color:#3a5566">⚫</span></td><td style="text-align:center;font-weight:700;color:#ffaa00;font-size:11px">x5.8</td><td><div class="db"><div style="width:65%;background:#ff8000"></div><div style="width:32%;background:#00c060"></div><div style="width:30%;background:#00a4ff"></div><div style="width:78%;background:#ffaa00"></div><div style="width:80%;background:#ff4040"></div></div></td></tr><tr><td><a href="https://fund.eastmoney.com/159611.html" target="_blank" class="sg" style="background:#ff8800">减仓</a></td><td><a href="https://fund.eastmoney.com/159611.html" target="_blank" class="en">电力ETF<br><span style="color:#3a5060;font-size:8px">159611</span></a></td><td style="text-align:center;font-size:9px;color:#5a7080">退潮</td><td style="text-align:center;font-weight:700;color:#3a5060;font-size:11px">+0%</td><td style="text-align:center"><span style="font-size:13px;color:#3a5566">⚫</span></td><td style="text-align:center;font-weight:700;color:#ff8800;font-size:11px">x4.6</td><td><div class="db"><div style="width:40%;background:#ff8000"></div><div style="width:50%;background:#00c060"></div><div style="width:50%;background:#00a4ff"></div><div style="width:35%;background:#ffaa00"></div><div style="width:58%;background:#ff4040"></div></div></td></tr><tr><td><a href="https://fund.eastmoney.com/512660.html" target="_blank" class="sg" style="background:#ff8800">减仓</a></td><td><a href="https://fund.eastmoney.com/512660.html" target="_blank" class="en">军工ETF国泰<br><span style="color:#3a5060;font-size:8px">512660</span></a></td><td style="text-align:center;font-size:9px;color:#5a7080">退潮</td><td style="text-align:center;font-weight:700;color:#ff4040;font-size:11px">+0.38%</td><td style="text-align:center"><span style="font-size:13px;color:#3a5566">⚫</span></td><td style="text-align:center;font-weight:700;color:#ff8800;font-size:11px">x4.4</td><td><div class="db"><div style="width:65%;background:#ff8000"></div><div style="width:50%;background:#00c060"></div><div style="width:30%;background:#00a4ff"></div><div style="width:35%;background:#ffaa00"></div><div style="width:58%;background:#ff4040"></div></div></td></tr><tr><td><a href="https://fund.eastmoney.com/512690.html" target="_blank" class="sg" style="background:#ff8800">减仓</a></td><td><a href="https://fund.eastmoney.com/512690.html" target="_blank" class="en">酒ETF鹏华<br><span style="color:#3a5060;font-size:8px">512690</span></a></td><td style="text-align:center;font-size:9px;color:#5a7080">退潮</td><td style="text-align:center;font-weight:700;color:#ff4040;font-size:11px">+1.01%</td><td style="text-align:center"><span style="font-size:13px;color:#3a5566">⚫</span></td><td style="text-align:center;font-weight:700;color:#ff8800;font-size:11px">x4.3</td><td><div class="db"><div style="width:40%;background:#ff8000"></div><div style="width:50%;background:#00c060"></div><div style="width:38%;background:#00a4ff"></div><div style="width:35%;background:#ffaa00"></div><div style="width:58%;background:#ff4040"></div></div></td></tr><tr><td><a href="https://fund.eastmoney.com/512880.html" target="_blank" class="sg" style="background:#556677">观望</a></td><td><a href="https://fund.eastmoney.com/512880.html" target="_blank" class="en">证券ETF国泰<br><span style="color:#3a5060;font-size:8px">512880</span></a></td><td style="text-align:center;font-size:9px;color:#5a7080">退潮</td><td style="text-align:center;font-weight:700;color:#ff4040;font-size:11px">+1.55%</td><td style="text-align:center"><span style="font-size:13px;color:#3a5566">⚫</span></td><td style="text-align:center;font-weight:700;color:#556677;font-size:11px">x4.1</td><td><div class="db"><div style="width:47%;background:#ff8000"></div><div style="width:50%;background:#00c060"></div><div style="width:30%;background:#00a4ff"></div><div style="width:35%;background:#ffaa00"></div><div style="width:58%;background:#ff4040"></div></div></td></tr><tr><td><a href="https://fund.eastmoney.com/515790.html" target="_blank" class="sg" style="background:#556677">观望</a></td><td><a href="https://fund.eastmoney.com/515790.html" target="_blank" class="en">光伏ETF华泰柏瑞<br><span style="color:#3a5060;font-size:8px">515790</span></a></td><td style="text-align:center;font-size:9px;color:#5a7080">退潮</td><td style="text-align:center;font-weight:700;color:#ff4040;font-size:11px">+0.68%</td><td style="text-align:center"><span style="font-size:13px;color:#3a5566">⚫</span></td><td style="text-align:center;font-weight:700;color:#556677;font-size:11px">x3.3</td><td><div class="db"><div style="width:65%;background:#ff8000"></div><div style="width:32%;background:#00c060"></div><div style="width:0%;background:#00a4ff"></div><div style="width:35%;background:#ffaa00"></div><div style="width:58%;background:#ff4040"></div></div></td></tr></tbody>
+        <thead><tr><th>信号</th><th>ETF</th><th>周期</th><th>涨跌</th><th>轮动</th><th>评分</th><th>五维</th></tr></thead>
+        <tbody><tr><td><a href="https://quote.eastmoney.com/sz513310.html" target="_blank" class="sg" style="background:#00c060">做多</a></td><td><a href="https://quote.eastmoney.com/sz513310.html" target="_blank" class="en">中韩半导体ETF<br><span style="color:#3a5060;font-size:8px">513310</span></a></td><td style="text-align:center;font-size:9px;color:#5a7080">启动</td><td style="text-align:center;font-weight:700;color:#ff4040;font-size:11px">+2.80%</td><td style="text-align:center"><span style="font-size:13px;color:#00a4ff">🔵</span></td><td style="text-align:center;font-weight:700;color:#00c060;font-size:11px">x8.2</td><td><div class="db"><div style="width:72%;background:#ff8000"></div><div style="width:60%;background:#00c060"></div><div style="width:88%;background:#00a4ff"></div><div style="width:75%;background:#ffaa00"></div><div style="width:70%;background:#ff4040"></div></div></td></tr><tr><td><a href="https://quote.eastmoney.com/sh518880.html" target="_blank" class="sg" style="background:#00c060">加仓</a></td><td><a href="https://quote.eastmoney.com/sh518880.html" target="_blank" class="en">黄金ETF华安<br><span style="color:#3a5060;font-size:8px">518880</span></a></td><td style="text-align:center;font-size:9px;color:#5a7080">启动</td><td style="text-align:center;font-weight:700;color:#ff4040;font-size:11px">+0.80%</td><td style="text-align:center"><span style="font-size:13px;color:#00a4ff">🔵</span></td><td style="text-align:center;font-weight:700;color:#00c060;font-size:11px">x8.0</td><td><div class="db"><div style="width:70%;background:#ff8000"></div><div style="width:75%;background:#00c060"></div><div style="width:85%;background:#00a4ff"></div><div style="width:80%;background:#ffaa00"></div><div style="width:75%;background:#ff4040"></div></div></td></tr><tr><td><a href="https://quote.eastmoney.com/sz512680.html" target="_blank" class="sg" style="background:#f39c12">持有</a></td><td><a href="https://quote.eastmoney.com/sz512680.html" target="_blank" class="en">航空航天ETF华夏<br><span style="color:#3a5060;font-size:8px">512680</span></a></td><td style="text-align:center;font-size:9px;color:#5a7080">高潮</td><td style="text-align:center;font-weight:700;color:#ff4040;font-size:11px">+1.90%</td><td style="text-align:center"><span style="font-size:13px;color:#ff3535">🔴</span></td><td style="text-align:center;font-weight:700;color:#f39c12;font-size:11px">x7.5</td><td><div class="db"><div style="width:85%;background:#ff8000"></div><div style="width:65%;background:#00c060"></div><div style="width:70%;background:#00a4ff"></div><div style="width:72%;background:#ffaa00"></div><div style="width:80%;background:#ff4040"></div></div></td></tr><tr><td><a href="https://quote.eastmoney.com/sz512660.html" target="_blank" class="sg" style="background:#f39c12">持有</a></td><td><a href="https://quote.eastmoney.com/sz512660.html" target="_blank" class="en">军工ETF国泰<br><span style="color:#3a5060;font-size:8px">512660</span></a></td><td style="text-align:center;font-size:9px;color:#5a7080">高潮</td><td style="text-align:center;font-weight:700;color:#ff4040;font-size:11px">+2.10%</td><td style="text-align:center"><span style="font-size:13px;color:#ff3535">🔴</span></td><td style="text-align:center;font-weight:700;color:#f39c12;font-size:11px">x7.3</td><td><div class="db"><div style="width:90%;background:#ff8000"></div><div style="width:68%;background:#00c060"></div><div style="width:72%;background:#00a4ff"></div><div style="width:70%;background:#ffaa00"></div><div style="width:72%;background:#ff4040"></div></div></td></tr><tr><td><a href="https://quote.eastmoney.com/sz159502.html" target="_blank" class="sg" style="background:#f39c12">持有</a></td><td><a href="https://quote.eastmoney.com/sz159502.html" target="_blank" class="en">标普生物科技ETF<br><span style="color:#3a5060;font-size:8px">159502</span></a></td><td style="text-align:center;font-size:9px;color:#5a7080">发酵</td><td style="text-align:center;font-weight:700;color:#ff4040;font-size:11px">+3.10%</td><td style="text-align:center"><span style="font-size:13px;color:#c87800">🟡</span></td><td style="text-align:center;font-weight:700;color:#f39c12;font-size:11px">x7.0</td><td><div class="db"><div style="width:65%;background:#ff8000"></div><div style="width:72%;background:#00c060"></div><div style="width:75%;background:#00a4ff"></div><div style="width:68%;background:#ffaa00"></div><div style="width:65%;background:#ff4040"></div></div></td></tr><tr><td><a href="https://quote.eastmoney.com/sz159825.html" target="_blank" class="sg" style="background:#00c060">做多</a></td><td><a href="https://quote.eastmoney.com/sz159825.html" target="_blank" class="en">农业ETF富国<br><span style="color:#3a5060;font-size:8px">159825</span></a></td><td style="text-align:center;font-size:9px;color:#5a7080">启动</td><td style="text-align:center;font-weight:700;color:#ff4040;font-size:11px">+1.50%</td><td style="text-align:center"><span style="font-size:13px;color:#00a4ff">🔵</span></td><td style="text-align:center;font-weight:700;color:#00c060;font-size:11px">x6.5</td><td><div class="db"><div style="width:78%;background:#ff8000"></div><div style="width:62%;background:#00c060"></div><div style="width:68%;background:#00a4ff"></div><div style="width:60%;background:#ffaa00"></div><div style="width:55%;background:#ff4040"></div></div></td></tr><tr><td><a href="https://quote.eastmoney.com/sz515880.html" target="_blank" class="sg" style="background:#e74c3c">减仓</a></td><td><a href="https://quote.eastmoney.com/sz515880.html" target="_blank" class="en">通信ETF华夏<br><span style="color:#3a5060;font-size:8px">515880</span></a></td><td style="text-align:center;font-size:9px;color:#5a7080">分歧</td><td style="text-align:center;font-weight:700;color:#ff4040;font-size:11px">+1.20%</td><td style="text-align:center"><span style="font-size:13px;color:#ff8000">🟣</span></td><td style="text-align:center;font-weight:700;color:#e74c3c;font-size:11px">x5.8</td><td><div class="db"><div style="width:60%;background:#ff8000"></div><div style="width:58%;background:#00c060"></div><div style="width:62%;background:#00a4ff"></div><div style="width:55%;background:#ffaa00"></div><div style="width:50%;background:#ff4040"></div></div></td></tr></tbody>
       </table>
     </div>
   </div>
 
-  <!-- L7 底栏 -->
+  <!-- L7 -->
   <div class="ftr">
-    <div class="ft f0"><b>[SUMMARY]</b><span>医药ETF易方达 🔴 启动中  热度60° 中性</span></div>
-    <div class="ft f1"><b>⚠️ RISK</b><span>热度60° 中性  半导体/5G/AI高位分歧</span></div>
-    <div class="ft f2"><b>✅ OPPORTUNITY</b><span>医药、光伏资金持续净流入</span></div>
+    <div class="ft f0"><b>[SUMMARY]</b><span>中韩半导体ETF 🔵 加仓中  热度69° 贪婪</span></div>
+    <div class="ft f1"><b>⚠️ RISK</b><span>热度69° 贪婪  科创/医疗高位  注意获利了结</span></div>
+    <div class="ft f2"><b>✅ OPPORTUNITY</b><span>医疗研发外包持续强势  黄金/军工资金流入</span></div>
   </div>
 
 </div>
+
+<script>
+// 自动刷新：每30秒
+let refreshTimer=null;
+const REFRESH_INTERVAL=30000;
+
+async function refreshData(){
+  const el=document.getElementById('refreshing');
+  if(el){el.style.display='inline';el.textContent='⟳ 刷新中';el.className='spin'}
+  try{
+    // 实际项目中这里fetch真实API
+    // const r=await fetch('/api/dash_data.json');
+    // const d=await r.json();
+    // updateUI(d);
+    // 更新时间显示
+    const now=new Date();
+    const ts=now.toLocaleTimeString('zh-CN',{hour12:false,hour:'2-digit',minute:'2-digit',second:'2-digit'});
+    const utEl=document.getElementById('ut');
+    if(utEl)utEl.textContent=ts;
+  }catch(e){
+    console.warn('Refresh failed:',e);
+  }
+  if(el){el.className='';el.textContent='✓ 已更新';setTimeout(()=>{if(el)el.style.display='none'},2000)}
+}
+
+// 启动定时刷新
+setTimeout(refreshData,REFRESH_INTERVAL);
+
+// 鼠标悬停滚动条显示
+document.querySelectorAll('.ntrack2').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{el.style.overflowX='scroll'});
+  el.addEventListener('mouseleave',()=>{el.style.overflowX='hidden'});
+});
+</script>
 </body>
 </html>
