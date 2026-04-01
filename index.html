@@ -238,5 +238,23 @@ document.querySelectorAll('.ntrack2').forEach(el=>{
   el.addEventListener('mouseleave',()=>{el.style.overflowX='hidden'});
 });
 </script>
-</body>
+<script>
+// ─── 真实API轮询 ───
+const API_URL=(location.hostname==='localhost'||location.hostname==='127.0.0.1')?'http://'+location.host+'/api/data':null;
+async function poll(){
+  if(!API_URL){const t=new Date().toLocaleTimeString('zh-CN',{hour12:false});const e=document.getElementById('ut');if(e)e.textContent=t;return;}
+  const el=document.getElementById('refreshing');
+  if(el){el.style.display='inline';el.textContent='⟳';el.className='spin';}
+  try{
+    const r=await fetch(API_URL+'?t='+Date.now());
+    const d=await r.json();
+    if(d&&d.updated){
+      const utEl=document.getElementById('ut');
+      if(utEl)utEl.textContent=d.updated.split(' ')[1]||d.updated;
+      console.log('Data updated:',d.updated,'News:',(d.news||[]).length,'Sectors:',(d.sectors||[]).length);
+    }
+  }catch(e){console.warn('Poll failed:',e.message);}
+  if(el){el.className='';el.textContent='OK';setTimeout(()=>{if(el)el.style.display='none';},1500);}
+}
+setTimeout(poll,1000);setInterval(poll,30000);</script></body>
 </html>
